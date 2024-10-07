@@ -4,12 +4,142 @@ In this document, we will explore various data structures and algorithms that ar
 
 ## Data Structures
 
-### Arrays
+## Arrays
 
-Arrays are a collection of elements identified by index or key. They are used to store multiple values in a single variable.
+Arrays are a collection of elements identified by index or key. They are used to store multiple values in a single variable. In C#, arrays are of fixed size and can hold elements of the same data type.
 
+### Example Declaration
 ```csharp
 int[] numbers = { 1, 2, 3, 4, 5 };
+```
+
+### CRUD Operations on Arrays
+
+#### 1. Create
+
+To create or initialize an array in C#, you can use the following syntax:
+
+```csharp
+int[] numbers = new int[5]; // Creates an array of size 5
+```
+
+You can also initialize an array with values:
+
+```csharp
+int[] numbers = { 1, 2, 3, 4, 5 }; // Initializes with values
+```
+
+#### 2. Read
+
+To read or access elements in an array, you use the index of the element. In C#, array indices are zero-based.
+
+```csharp
+int firstNumber = numbers[0]; // Accesses the first element (1)
+int secondNumber = numbers[1]; // Accesses the second element (2)
+```
+
+You can also loop through an array to read all its elements:
+
+```csharp
+for (int i = 0; i < numbers.Length; i++) {
+    Console.WriteLine(numbers[i]); // Prints each element
+}
+```
+
+#### 3. Update
+
+To update an element in an array, you simply assign a new value to the desired index:
+
+```csharp
+numbers[2] = 10; // Updates the third element (3) to 10
+```
+
+You can also loop through an array to update elements based on some condition:
+
+```csharp
+for (int i = 0; i < numbers.Length; i++) {
+    if (numbers[i] % 2 == 0) {
+        numbers[i] += 1; // Increments even numbers by 1
+    }
+}
+```
+
+#### 4. Delete
+
+Since arrays in C# have a fixed size, you cannot directly delete an element. However, you can achieve the effect of deletion by shifting elements and reducing the size of the logical array:
+
+```csharp
+int indexToDelete = 1; // Index of element to delete (value 2)
+for (int i = indexToDelete; i < numbers.Length - 1; i++) {
+    numbers[i] = numbers[i + 1]; // Shift elements to the left
+}
+
+// Optionally, set the last element to a default value (e.g., 0)
+numbers[numbers.Length - 1] = 0; // Assuming you want to set it to 0
+```
+
+### Example of Full CRUD Operations
+
+Here is a complete example demonstrating CRUD operations on an array:
+
+```csharp
+using System;
+
+class Program {
+    static void Main() {
+        // Create
+        int[] numbers = { 1, 2, 3, 4, 5 };
+
+        // Read
+        Console.WriteLine("Original array:");
+        for (int i = 0; i < numbers.Length; i++) {
+            Console.WriteLine(numbers[i]);
+        }
+
+        // Update
+        numbers[2] = 10; // Update third element (3) to 10
+        Console.WriteLine("\nArray after update:");
+        for (int i = 0; i < numbers.Length; i++) {
+            Console.WriteLine(numbers[i]);
+        }
+
+        // Delete
+        int indexToDelete = 1; // Index of element to delete (value 2)
+        for (int i = indexToDelete; i < numbers.Length - 1; i++) {
+            numbers[i] = numbers[i + 1]; // Shift elements to the left
+        }
+        Array.Resize(ref numbers, numbers.Length - 1); // Resize the array to remove last element
+        Console.WriteLine("\nArray after deletion:");
+        for (int i = 0; i < numbers.Length; i++) {
+            Console.WriteLine(numbers[i]);
+        }
+    }
+}
+```
+
+### Output
+When you run the above code, the output will be:
+
+```
+Original array:
+1
+2
+3
+4
+5
+
+Array after update:
+1
+2
+10
+4
+5
+
+Array after deletion:
+1
+10
+4
+5
 ```
 
 ### Linked Lists
