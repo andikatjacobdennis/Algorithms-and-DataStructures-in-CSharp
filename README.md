@@ -336,7 +336,7 @@ class Program
 }
 ```
 
-#### Jagged array
+#### Jagged Array
 
 A jagged array in C# is an array of arrays, where each "sub-array" can have a different size. It's sometimes called an "array of arrays."
 
