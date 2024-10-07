@@ -78,14 +78,213 @@ hashTable["one"] = 1;
 hashTable["two"] = 2;
 ```
 
-### Trees
+Here’s an overview of each tree type, including **Trees**, **Binary Trees**, **Binary Search Trees**, **Heaps**, and **Tries**, along with sample C# code snippets for each.
 
-A tree is a hierarchical data structure consisting of nodes, with a single node as the root and other nodes as children.
+---
+
+## Trees
+
+A tree is a hierarchical data structure consisting of nodes, where each node contains a value and references to its child nodes. The topmost node is called the root, and each node can have zero or more child nodes. Trees are used in various applications, such as representing hierarchical data (e.g., file systems) and enabling efficient search operations.
 
 ```csharp
 public class TreeNode {
     public int Value;
     public List<TreeNode> Children = new List<TreeNode>();
+}
+```
+
+---
+
+### Binary Trees
+
+A binary tree is a specific type of tree where each node has at most two children, referred to as the left child and the right child. Binary trees are used in various algorithms and data structures, such as binary search trees and heaps.
+
+```csharp
+public class BinaryTreeNode {
+    public int Value;
+    public BinaryTreeNode Left;
+    public BinaryTreeNode Right;
+
+    public BinaryTreeNode(int value) {
+        Value = value;
+        Left = null;
+        Right = null;
+    }
+}
+```
+
+---
+
+### Binary Search Trees (BST)
+
+A binary search tree is a binary tree with the additional property that for each node, all values in the left subtree are less than the node's value, and all values in the right subtree are greater. This property allows for efficient searching, insertion, and deletion operations.
+
+```csharp
+public class BinarySearchTree {
+    public BinaryTreeNode Root;
+
+    public void Insert(int value) {
+        Root = InsertRec(Root, value);
+    }
+
+    private BinaryTreeNode InsertRec(BinaryTreeNode node, int value) {
+        if (node == null) {
+            return new BinaryTreeNode(value);
+        }
+
+        if (value < node.Value) {
+            node.Left = InsertRec(node.Left, value);
+        } else if (value > node.Value) {
+            node.Right = InsertRec(node.Right, value);
+        }
+
+        return node;
+    }
+
+    public bool Search(int value) {
+        return SearchRec(Root, value);
+    }
+
+    private bool SearchRec(BinaryTreeNode node, int value) {
+        if (node == null) {
+            return false;
+        }
+
+        if (value == node.Value) {
+            return true;
+        } else if (value < node.Value) {
+            return SearchRec(node.Left, value);
+        } else {
+            return SearchRec(node.Right, value);
+        }
+    }
+}
+```
+
+---
+
+### Heaps
+
+A heap is a special tree-based data structure that satisfies the heap property. In a max-heap, for any given node, the value of the node is greater than or equal to the values of its children, and in a min-heap, the value of the node is less than or equal to the values of its children. Heaps are commonly used in priority queues and sorting algorithms like heap sort.
+
+```csharp
+public class MinHeap {
+    private List<int> elements = new List<int>();
+
+    public void Insert(int value) {
+        elements.Add(value);
+        HeapifyUp(elements.Count - 1);
+    }
+
+    private void HeapifyUp(int index) {
+        while (index > 0) {
+            int parentIndex = (index - 1) / 2;
+            if (elements[index] >= elements[parentIndex]) break;
+
+            // Swap
+            int temp = elements[index];
+            elements[index] = elements[parentIndex];
+            elements[parentIndex] = temp;
+            index = parentIndex;
+        }
+    }
+
+    public int ExtractMin() {
+        if (elements.Count == 0) throw new InvalidOperationException("Heap is empty.");
+
+        int min = elements[0];
+        elements[0] = elements[elements.Count - 1];
+        elements.RemoveAt(elements.Count - 1);
+        HeapifyDown(0);
+        return min;
+    }
+
+    private void HeapifyDown(int index) {
+        int leftChildIndex, rightChildIndex, smallestIndex;
+
+        while (true) {
+            leftChildIndex = 2 * index + 1;
+            rightChildIndex = 2 * index + 2;
+            smallestIndex = index;
+
+            if (leftChildIndex < elements.Count && elements[leftChildIndex] < elements[smallestIndex]) {
+                smallestIndex = leftChildIndex;
+            }
+
+            if (rightChildIndex < elements.Count && elements[rightChildIndex] < elements[smallestIndex]) {
+                smallestIndex = rightChildIndex;
+            }
+
+            if (smallestIndex == index) break;
+
+            // Swap
+            int temp = elements[index];
+            elements[index] = elements[smallestIndex];
+            elements[smallestIndex] = temp;
+            index = smallestIndex;
+        }
+    }
+}
+```
+
+---
+
+### Trie
+
+A trie, or prefix tree, is a tree-like data structure used to store a dynamic set of strings, where the keys are usually strings. Tries are particularly useful for tasks involving retrieval of keys with a common prefix, such as autocomplete systems.
+
+```csharp
+public class TrieNode {
+    public Dictionary<char, TrieNode> Children = new Dictionary<char, TrieNode>();
+    public bool IsEndOfWord;
+
+    public TrieNode() {
+        IsEndOfWord = false;
+    }
+}
+
+public class Trie {
+    private TrieNode root;
+
+    public Trie() {
+        root = new TrieNode();
+    }
+
+    public void Insert(string word) {
+        TrieNode currentNode = root;
+
+        foreach (char c in word) {
+            if (!currentNode.Children.ContainsKey(c)) {
+                currentNode.Children[c] = new TrieNode();
+            }
+            currentNode = currentNode.Children[c];
+        }
+        currentNode.IsEndOfWord = true;
+    }
+
+    public bool Search(string word) {
+        TrieNode currentNode = root;
+
+        foreach (char c in word) {
+            if (!currentNode.Children.ContainsKey(c)) {
+                return false;
+            }
+            currentNode = currentNode.Children[c];
+        }
+        return currentNode.IsEndOfWord;
+    }
+
+    public bool StartsWith(string prefix) {
+        TrieNode currentNode = root;
+
+        foreach (char c in prefix) {
+            if (!currentNode.Children.ContainsKey(c)) {
+                return false;
+            }
+            currentNode = currentNode.Children[c];
+        }
+        return true;
+    }
 }
 ```
 
