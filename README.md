@@ -134,6 +134,13 @@ In this document, we will explore various data structures and algorithms that ar
 
 Arrays are a collection of elements identified by index or key. They are used to store multiple values in a single variable. In C#, arrays are of fixed size and can hold elements of the same data type.
 
+**Use Cases:**
+- **Fixed Product Catalog**: Use arrays to store a fixed list of products, such as the days of a sale event.
+- **Sales Data for Specific Periods**: Store sales data for a specific month where the number of entries is known beforehand.
+- **Product Attributes**: Maintain attributes of a product (e.g., dimensions) that do not change frequently.
+
+**Where Not to Use**: Avoid using arrays when you need to frequently add or remove products, as resizing an array requires creating a new one and copying elements.
+
 #### Example Declaration
 ```csharp
 int[] numbers = { 1, 2, 3, 4, 5 };
@@ -272,6 +279,13 @@ Array after deletion:
 
 `IEnumerable<T>` is an interface that represents a collection of objects that can be enumerated. It is often used for working with collections like lists, arrays, and other data structures in a more flexible way compared to arrays. 
 
+**Use Cases:**
+- **Lazy Loading of Products**: Use IEnumerable to fetch products from a database only when needed, improving performance and memory usage.
+- **Filtering Sales Data**: Apply LINQ queries to filter sales data based on various criteria (e.g., sales above a certain threshold).
+- **Streaming Data Processing**: Process large datasets of sales transactions without loading them entirely into memory.
+
+**Where Not to Use**: Avoid using IEnumerable when you need to access elements by index or require multiple passes over the collection, as it can lead to inefficiencies.
+
 #### Example Declaration
 You typically work with `IEnumerable<T>` when using collections like `List<T>`, but you can also create it from an array:
 
@@ -405,11 +419,16 @@ Collection after deletion:
 5
 ```
 
-Here's an explanation of how to perform CRUD (Create, Read, Update, Delete) operations using `IQueryable<T>` in C#. The `IQueryable<T>` interface is an extension of `IEnumerable<T>` and is used primarily for querying data from a data source, especially in the context of LINQ (Language Integrated Query) and Entity Framework.
-
 ### IQueryable<T>
 
 `IQueryable<T>` is an interface that allows for querying data from a data source in a way that enables the execution of queries against a remote data source (like a database) while still providing the capabilities of LINQ. It provides a way to perform queries on data collections that may not be entirely loaded into memory, which makes it ideal for working with databases.
+
+**Use Cases:**
+- **Dynamic Sales Queries**: Utilize IQueryable for querying product sales data from a database, allowing for efficient filtering and sorting.
+- **Remote Data Access**: Ideal for accessing sales data from remote sources where only necessary records should be retrieved.
+- **Complex Reporting**: Create complex reports by chaining multiple query operations on sales data.
+
+**Where Not to Use**: Avoid using IQueryable for in-memory collections where immediate execution is required, as it can complicate the code unnecessarily.
 
 #### Example Declaration
 
@@ -1724,6 +1743,109 @@ public class Graph {
     }
 }
 ```
+
+Here are the use cases for each data structure in the context of product and sales, along with scenarios where they should not be used:
+
+### 2. IEnumerable
+
+### 3. IQueryable
+
+
+
+### 4. List
+
+**Use Cases:**
+- **Dynamic Product Lists**: Use lists to maintain a dynamic list of products that can be easily modified (added/removed).
+- **Sales Transactions History**: Store a history of sales transactions where entries are frequently added and removed.
+- **Customer Orders Management**: Maintain customer orders in a list for easy access and manipulation.
+
+**Where Not to Use**: Avoid using lists when you need constant-time access by index, as they may have performance overhead compared to arrays.
+
+### 5. LinkedList
+
+**Use Cases:**
+- **Order Processing Queue**: Use linked lists to manage orders that require frequent insertions and deletions at both ends.
+- **Undo Functionality in Sales Applications**: Implement an undo feature in applications that allow users to revert changes easily.
+- **Dynamic Product Bundles Management**: Maintain product bundles where items can be added or removed dynamically.
+
+**Where Not to Use**: Avoid linked lists when random access is needed, as accessing elements requires traversing the list from the head.
+
+### 6. Stack
+
+**Use Cases:**
+- **Sales Order Processing Stack**: Manage pending sales orders using a stack structure for last-in-first-out processing.
+- **Function Call Management in Sales Systems**: Track function calls related to sales operations, such as discounts applied during checkout.
+- **Backtracking Sales Decisions**: Implement backtracking features in decision-making processes related to pricing or promotions.
+
+**Where Not to Use**: Avoid using stacks when you need random access or frequent modifications at arbitrary positions within the collection.
+
+### 7. ConcurrentStack
+
+**Use Cases:**
+- **Thread-Safe Order Management System**: Manage orders concurrently in multi-threaded applications without locks.
+- **Task Scheduling in Sales Applications**: Handle tasks that can be processed in parallel while maintaining order of execution.
+- **Real-Time Inventory Updates**: Update inventory levels concurrently as sales occur across multiple threads.
+
+**Where Not to Use**: Avoid using ConcurrentStack when thread safety is not required, as it introduces unnecessary overhead compared to non-thread-safe stacks.
+
+### 8. Queue
+
+**Use Cases:**
+- **Customer Service Requests Handling**: Manage incoming customer service requests in a first-in-first-out manner.
+- **Sales Lead Management System**: Organize leads that need follow-up based on their arrival time.
+- **Event Scheduling for Promotions**: Schedule promotional events based on their order of creation.
+
+**Where Not to Use**: Avoid queues when you need random access or frequent modifications at arbitrary positions within the collection.
+
+### 9. ConcurrentQueue
+
+**Use Cases:**
+- **Thread-Safe Lead Processing System**: Safely manage leads being processed by multiple agents concurrently.
+- **Real-Time Sales Notifications Handling**: Handle notifications about sales events across multiple threads without locking issues.
+- **Task Management in Multi-threaded Environments**: Efficiently manage tasks that require concurrent processing without losing order.
+
+**Where Not to Use**: Avoid using ConcurrentQueue if thread safety is unnecessary, as it may lead to performance overhead compared to standard queues.
+
+### 10. Dictionary<TKey, TValue>
+
+**Use Cases:** 
+- **Product Lookup by ID or Name:** Quickly retrieve product details based on unique identifiers like SKU or product name.
+- **Sales Data Aggregation:** Store aggregated sales data where keys represent products and values represent total sales figures.
+- **Configuration Settings Storage:** Maintain application settings where each setting can be accessed via a unique key.
+
+**Where Not to Use:** Avoid dictionaries when order matters since they do not maintain any specific order of elements.
+
+### 11. ConcurrentDictionary<TKey, TValue>
+
+**Use Cases:** 
+- **Thread-Safe Product Inventory Management:** Safely manage inventory levels across multiple threads without risking data corruption.
+- **User Session Management:** Store user sessions in a thread-safe manner for web applications handling concurrent requests.
+- **Real-Time Sales Tracking:** Efficiently update and retrieve real-time sales data from multiple threads.
+
+**Where Not to Use:** Avoid using ConcurrentDictionary if thread safety is not required, as it incurs additional overhead compared to regular dictionaries.
+
+### 12. Trees (Binary Trees, Binary Search Trees, Heaps, Trie)
+
+#### Binary Trees
+- **Use Cases:** Hierarchical representation of product categories; implementing expression trees for pricing calculations.
+  
+#### Binary Search Trees (BST)
+- **Use Cases:** Fast searching and sorting of products; maintaining sorted lists of customer transactions based on timestamps.
+
+#### Heaps
+- **Use Cases:** Priority queue implementations for managing high-priority sales tasks; optimizing inventory replenishment strategies based on demand forecasts.
+
+#### Trie
+- **Use Cases:** Efficiently storing and retrieving product names for autocomplete features in e-commerce platforms; managing keyword searches in product catalogs.
+
+#### Where Not to Use:
+Avoid trees when dealing with small datasets or when simpler structures (like arrays or lists) would suffice, as they introduce unnecessary complexity.
+
+### 13. Graphs
+
+**Use Cases:** 
+- **Network Analysis for Sales Channels:** Model relationships between different sales channels and their performance metrics.
+- **Customer Relationship Mapping:** Visualize connections between customers based on purchasing behavior and referrals.
 
 ## Algorithms
 
