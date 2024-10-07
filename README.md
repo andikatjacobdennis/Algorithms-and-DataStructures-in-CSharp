@@ -231,10 +231,6 @@ public int BinarySearch(int[] arr, int target) {
 
 ### Graph Algorithms
 
-Here's an updated version of your **Graph Algorithms** section, including **Edmonds-Karp** and **All Paths** algorithms along with the previously mentioned ones:
-
-### Graph Algorithms
-
 #### Depth-First Search (DFS)
 
 DFS is an algorithm for traversing or searching tree or graph data structures. It starts at the root and explores as far as possible along each branch before backtracking.
