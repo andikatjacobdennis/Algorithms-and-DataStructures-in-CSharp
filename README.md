@@ -1840,7 +1840,32 @@ public int BinarySearch(int[] arr, int target) {
 
 #### 2. **Traversal Algorithms**
    - 2.1 **Breadth-First Search (BFS)**
+
+BFS is an algorithm for traversing or searching tree or graph data structures. It starts at the root and explores all neighbors at the present depth prior to moving on to nodes at the next depth level.
+
+```csharp
+public void BFS(int start) {
+    Queue<int> queue = new Queue<int>();
+    HashSet<int> visited = new HashSet<int>();
+
+    queue.Enqueue(start);
+    visited.Add(start);
+
+    while (queue.Count > 0) {
+        int vertex = queue.Dequeue();
+
+        foreach (var neighbor in adjacencyList[vertex]) {
+            if (!visited.Contains(neighbor)) {
+                visited.Add(neighbor);
+                queue.Enqueue(neighbor);
+            }
+        }
+    }
+}
+```
+
    - 2.2 **Depth-First Search (DFS)**
+
 DFS is an algorithm for traversing or searching tree or graph data structures. It starts at the root and explores as far as possible along each branch before backtracking.
 
 ```csharp
@@ -1924,28 +1949,6 @@ public void DFS(int vertex, HashSet<int> visited) {
 
 #### Breadth-First Search (BFS)
 
-BFS is an algorithm for traversing or searching tree or graph data structures. It starts at the root and explores all neighbors at the present depth prior to moving on to nodes at the next depth level.
-
-```csharp
-public void BFS(int start) {
-    Queue<int> queue = new Queue<int>();
-    HashSet<int> visited = new HashSet<int>();
-
-    queue.Enqueue(start);
-    visited.Add(start);
-
-    while (queue.Count > 0) {
-        int vertex = queue.Dequeue();
-
-        foreach (var neighbor in adjacencyList[vertex]) {
-            if (!visited.Contains(neighbor)) {
-                visited.Add(neighbor);
-                queue.Enqueue(neighbor);
-            }
-        }
-    }
-}
-```
 
 #### Dijkstra's Algorithm
 
