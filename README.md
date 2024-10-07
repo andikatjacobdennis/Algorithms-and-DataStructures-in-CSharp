@@ -574,6 +574,12 @@ class Program {
 
 `List<T>` is a generic collection that allows you to store a list of items of a specific type. It provides methods to manipulate the data, including adding, removing, and searching for elements. The `List<T>` is particularly useful when you need a collection that can grow and shrink in size dynamically.
 
+**Use Cases:**
+- **Dynamic Product Lists**: Use lists to maintain a dynamic list of products that can be easily modified (added/removed).
+- **Sales Transactions History**: Store a history of sales transactions where entries are frequently added and removed.
+- **Customer Orders Management**: Maintain customer orders in a list for easy access and manipulation.
+
+**Where Not to Use**: Avoid using lists when you need constant-time access by index, as they may have performance overhead compared to arrays.
 #### Example Declaration
 
 You can declare a `List<T>` as follows:
@@ -1757,13 +1763,6 @@ Here are the use cases for each data structure in the context of product and sal
 
 
 ### 4. List
-
-**Use Cases:**
-- **Dynamic Product Lists**: Use lists to maintain a dynamic list of products that can be easily modified (added/removed).
-- **Sales Transactions History**: Store a history of sales transactions where entries are frequently added and removed.
-- **Customer Orders Management**: Maintain customer orders in a list for easy access and manipulation.
-
-**Where Not to Use**: Avoid using lists when you need constant-time access by index, as they may have performance overhead compared to arrays.
 
 ### 5. LinkedList
 
