@@ -1154,19 +1154,120 @@ class Program {
 }
 ```
 
-### Hash Tables
+### Dictionary<TKey, TValue>
 
-A hash table is a data structure that implements an associative array, a structure that can map keys to values.
+A `Dictionary<TKey, TValue>` is a collection that stores key-value pairs, where each key must be unique. It provides efficient retrieval of values based on their associated keys.
+
+#### Example Declaration
+
+You can declare a `Dictionary<TKey, TValue>` as follows:
 
 ```csharp
-Dictionary<string, int> hashTable = new Dictionary<string, int>();
-hashTable["one"] = 1;
-hashTable["two"] = 2;
+Dictionary<int, string> students = new Dictionary<int, string>();
 ```
 
-Here’s an overview of each tree type, including **Trees**, **Binary Trees**, **Binary Search Trees**, **Heaps**, and **Tries**, along with sample C# code snippets for each.
+#### CRUD Operations on Dictionary<TKey, TValue>
 
----
+##### 1. Create
+
+To add new key-value pairs to a `Dictionary<TKey, TValue>`, you use the `Add()` method or the indexer.
+
+```csharp
+// Create (Add new key-value pairs)
+students.Add(1, "Alice"); // Adds a new entry with key 1 and value "Alice"
+students[2] = "Bob"; // Adds a new entry with key 2 and value "Bob"
+```
+
+##### 2. Read
+
+To read data from a `Dictionary<TKey, TValue>`, you can use the indexer to access a value by its key. The `TryGetValue()` method allows you to check if a key exists and retrieve the corresponding value.
+
+```csharp
+// Read the value for a specific key
+if (students.TryGetValue(1, out string studentName)) {
+    Console.WriteLine($"Student with ID 1: {studentName}"); // Outputs: Alice
+}
+
+// Read all key-value pairs
+foreach (var kvp in students) {
+    Console.WriteLine($"ID: {kvp.Key}, Name: {kvp.Value}");
+}
+```
+
+##### 3. Update
+
+To update an existing value in the dictionary, you can use the indexer to set the value for a specific key.
+
+```csharp
+// Update the value for an existing key
+if (students.ContainsKey(1)) {
+    students[1] = "Alice Johnson"; // Updates the name for key 1
+}
+
+// Check the updated value
+Console.WriteLine($"Updated student with ID 1: {students[1]}"); // Outputs: Alice Johnson
+```
+
+##### 4. Delete
+
+To delete a key-value pair from the dictionary, you use the `Remove()` method, which removes the entry with the specified key.
+
+```csharp
+// Delete a key-value pair
+if (students.Remove(2)) {
+    Console.WriteLine("Student with ID 2 has been removed.");
+}
+
+// Check the number of entries after removal
+Console.WriteLine($"Number of students after removal: {students.Count}"); // Outputs: 1
+```
+
+#### Example of Full CRUD Operations
+
+Here’s a complete example demonstrating CRUD operations using `Dictionary<TKey, TValue>`:
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+class Program {
+    static void Main() {
+        // Create a Dictionary
+        Dictionary<int, string> students = new Dictionary<int, string>();
+
+        // Create: Adding new key-value pairs
+        students.Add(1, "Alice");
+        students[2] = "Bob";
+
+        // Read: Display a specific student's name
+        if (students.TryGetValue(1, out string studentName)) {
+            Console.WriteLine($"Student with ID 1: {studentName}"); // Outputs: Alice
+        }
+
+        // Read: Display all students
+        Console.WriteLine("\nAll students:");
+        foreach (var kvp in students) {
+            Console.WriteLine($"ID: {kvp.Key}, Name: {kvp.Value}");
+        }
+
+        // Update: Modify an existing student's name
+        if (students.ContainsKey(1)) {
+            students[1] = "Alice Johnson"; // Update the name for key 1
+        }
+
+        Console.WriteLine("\nAfter Update:");
+        Console.WriteLine($"Updated student with ID 1: {students[1]}"); // Outputs: Alice Johnson
+
+        // Delete: Remove a student
+        if (students.Remove(2)) {
+            Console.WriteLine("\nStudent with ID 2 has been removed.");
+        }
+
+        // Check the number of entries after removal
+        Console.WriteLine($"Number of students after removal: {students.Count}"); // Outputs: 1
+    }
+}
+```
 
 ## Trees
 
