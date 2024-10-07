@@ -336,6 +336,102 @@ class Program
 }
 ```
 
+#### Jagged array
+
+A jagged array in C# is an array of arrays, where each "sub-array" can have a different size. It's sometimes called an "array of arrays."
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Declare and initialize a jagged array with 3 arrays of different lengths
+        int[][] jaggedArray = new int[3][];
+        
+        // Initialize each "sub-array" separately
+        jaggedArray[0] = new int[] { 1, 2, 3 };
+        jaggedArray[1] = new int[] { 4, 5 };
+        jaggedArray[2] = new int[] { 6, 7, 8, 9 };
+
+        // Print the jagged array
+        Console.WriteLine("Jagged Array:");
+        for (int i = 0; i < jaggedArray.Length; i++)
+        {
+            for (int j = 0; j < jaggedArray[i].Length; j++)
+            {
+                Console.Write(jaggedArray[i][j] + "\t");
+            }
+            Console.WriteLine(); // New line after each sub-array
+        }
+    }
+}
+```
+
+#### Matrix Multiplication
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Define two matrices to multiply
+        int[,] matrixA = {
+            { 1, 2, 3 },
+            { 4, 5, 6 }
+        };
+        
+        int[,] matrixB = {
+            { 7, 8 },
+            { 9, 10 },
+            { 11, 12 }
+        };
+
+        // Get the dimensions of the matrices
+        int rowsA = matrixA.GetLength(0); // Number of rows in matrix A
+        int colsA = matrixA.GetLength(1); // Number of columns in matrix A
+        int rowsB = matrixB.GetLength(0); // Number of rows in matrix B
+        int colsB = matrixB.GetLength(1); // Number of columns in matrix B
+
+        // Check if the matrices can be multiplied
+        if (colsA != rowsB)
+        {
+            Console.WriteLine("Matrix multiplication is not possible.");
+            return;
+        }
+
+        // Initialize the result matrix with the appropriate size
+        int[,] resultMatrix = new int[rowsA, colsB];
+
+        // Perform matrix multiplication
+        for (int i = 0; i < rowsA; i++)
+        {
+            for (int j = 0; j < colsB; j++)
+            {
+                for (int k = 0; k < colsA; k++)
+                {
+                    resultMatrix[i, j] += matrixA[i, k] * matrixB[k, j];
+                }
+            }
+        }
+
+        // Print the resulting matrix
+        Console.WriteLine("Resulting Matrix after multiplication:");
+        for (int i = 0; i < rowsA; i++)
+        {
+            for (int j = 0; j < colsB; j++)
+            {
+                Console.Write(resultMatrix[i, j] + "\t");
+            }
+            Console.WriteLine(); // New line after each row
+        }
+    }
+}
+```
+
 ### IEnumerable<T>
 
 `IEnumerable<T>` is an interface that represents a collection of objects that can be enumerated. It is often used for working with collections like lists, arrays, and other data structures in a more flexible way compared to arrays. 
