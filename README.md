@@ -138,11 +138,54 @@
 
 In this document, we will explore various data structures and algorithms that are essential for efficient programming in C#. Understanding these concepts will help you write better code, optimize performance, and solve complex problems effectively.
 
-## Big-O Notation
+## Time and space complexity
 
-Sure! Here’s the enhanced version with the mathematical parts properly formatted using code blocks.
+Time and space complexity are fundamental concepts in computer science and algorithm analysis. They help in evaluating the efficiency of an algorithm regarding the resources it consumes. Let’s break them down along with Big-O notation.
 
-### 1. **Array - O(1)**
+### Time Complexity
+
+**Definition**: Time complexity measures the amount of time an algorithm takes to complete as a function of the size of the input data. It helps in estimating how the runtime of an algorithm grows as the size of the input increases.
+
+**Common Time Complexities**:
+1. **O(1)**: Constant time – the execution time does not depend on the input size.
+   - Example: Accessing an element in an array by index.
+   
+2. **O(n)**: Linear time – the execution time grows linearly with the input size.
+   - Example: A loop that iterates through an array of size \(n\).
+   
+3. **O(log n)**: Logarithmic time – the execution time grows logarithmically as the input size increases. Commonly seen in algorithms that divide the problem space in half (e.g., binary search).
+   
+4. **O(n^2)**: Quadratic time – the execution time grows quadratically with the input size. Typically found in algorithms with nested loops.
+   - Example: Bubble sort or selection sort.
+   
+5. **O(n!)**: Factorial time – the execution time grows factorially with the input size, usually in recursive algorithms that generate all permutations of the input.
+
+### Space Complexity
+
+**Definition**: Space complexity measures the amount of memory an algorithm uses as a function of the input size. It includes both the space required for the input and the auxiliary space (temporary space used during execution).
+
+**Common Space Complexities**:
+1. **O(1)**: Constant space – the algorithm uses a fixed amount of space regardless of the input size.
+   - Example: Using a few variables to store data.
+   
+2. **O(n)**: Linear space – the algorithm uses space proportional to the input size.
+   - Example: Creating a copy of an input array or a list.
+   
+3. **O(n^2)**: Quadratic space – this occurs when the algorithm requires a two-dimensional data structure based on the input size, such as in dynamic programming problems.
+
+### Big-O Notation
+
+**Definition**: Big-O notation is a mathematical notation used to describe the upper bound of the time complexity or space complexity of an algorithm. It provides an asymptotic analysis of the algorithm's performance, focusing on the behavior of the function as the input size grows towards infinity.
+
+**Key Points**:
+- **Focus on the Worst Case**: Big-O describes the worst-case scenario, giving an upper limit on the time or space complexity.
+- **Ignoring Constants and Lower Order Terms**: When expressing an algorithm's complexity, we ignore constant factors and lower-order terms, as they become insignificant for large input sizes.
+- **Example**: If an algorithm has a time complexity of \(3n^2 + 2n + 5\), in Big-O notation, we represent it as:
+  ```math
+  O(n^2)
+  ```
+
+#### 1. **Array - O(1)**
 
 **Description**: Access an element in an array using its index.
 
@@ -164,7 +207,7 @@ public class ArrayExample
   ```
   - Therefore, regardless of the size of the array, accessing an element takes \(O(1)\) time.
 
-### 2. **Linear Search - O(n)**
+#### 2. **Linear Search - O(n)**
 
 **Description**: Search for a number in an array by checking each element one by one.
 
@@ -192,9 +235,7 @@ public class LinearSearchExample
   O(n)
   ```
 
----
-
-### 3. **Binary Search - O(log n)**
+#### 3. **Binary Search - O(log n)**
 
 **Description**: Search for a number in a sorted array by dividing the array in half each time.
 
@@ -234,7 +275,7 @@ public class BinarySearchExample
   O(log n)
   ```
 
-### 4. **Bubble Sort - O(n²)**
+#### 4. **Bubble Sort - O(n²)**
 
 **Description**: A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
 
@@ -274,7 +315,7 @@ public class BubbleSortExample
   O(n^2)
   ```
 
-### 5. **Stack - O(1)**
+#### 5. **Stack - O(1)**
 
 **Description**: A stack is a collection where you can only add or remove items from one end (the top).
 
@@ -305,7 +346,7 @@ public class StackExample
   O(1)
   ```
 
-### 6. **Factorial Calculation - O(n!)**
+#### 6. **Factorial Calculation - O(n!)**
 
 **Description**: A method to calculate the factorial of a number using recursion.
 
