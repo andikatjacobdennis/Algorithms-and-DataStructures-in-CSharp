@@ -1692,6 +1692,11 @@ public class BinarySearchTree {
 }
 ```
 
+#### Segment Tree / Interval Tree
+- **Description**: A segment tree is a binary tree used for storing intervals or segments.
+- **Use Case**: Useful for answering range queries efficiently, such as finding overlapping search terms or ranges.
+- **Implementation**: Provides efficient querying for range minimum/maximum or sum queries.
+
 #### B-Trees
 
 A **B-Tree** is a self-balancing tree data structure that maintains sorted data and allows searches, sequential access, insertions, and deletions in logarithmic time. B-Trees are commonly used in databases and file systems to manage large amounts of data efficiently. They are designed to work well on disk storage systems, minimizing the number of disk reads required.
@@ -2246,6 +2251,26 @@ public int BinarySearch(int[] arr, int target) {
     return -1; // Not found
 }
 ```
+
+### **Inverted Index**
+- **Description**: An inverted index is a mapping from content (like words or terms) to its locations in a database or a document.
+- **Use Case**: Essential for full-text search engines, allowing quick lookup of documents containing specific keywords.
+- **Implementation**: Typically involves a hash table or trie structure for storing terms and their associated document IDs.
+
+### **Bloom Filter**
+- **Description**: A space-efficient probabilistic data structure used to test whether an element is a member of a set.
+- **Use Case**: Quickly checking for the presence of search terms, reducing the need for costly lookups.
+- **Implementation**: Utilizes multiple hash functions and bit arrays.
+
+### **Caching Mechanisms**
+- **Description**: Caching can significantly improve the performance of search queries by storing frequently accessed data.
+- **Use Case**: Using data structures like LRU (Least Recently Used) Cache can optimize repeated search requests.
+- **Implementation**: Combines a hash map with a doubly linked list to keep track of usage.
+
+### **Matrix Factorization / Collaborative Filtering**
+- **Description**: Techniques used in recommendation systems to predict user preferences based on past behavior.
+- **Use Case**: Enhancing search results with personalized recommendations.
+- **Implementation**: Algorithms like Singular Value Decomposition (SVD) or Alternating Least Squares (ALS).
 
 ### Graph Algorithms
 
