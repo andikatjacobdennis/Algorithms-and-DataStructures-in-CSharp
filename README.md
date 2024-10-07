@@ -142,6 +142,143 @@ Array after deletion:
 5
 ```
 
+### IEnumerable<T>
+
+`IEnumerable<T>` is an interface that represents a collection of objects that can be enumerated. It is often used for working with collections like lists, arrays, and other data structures in a more flexible way compared to arrays. 
+
+#### Example Declaration
+You typically work with `IEnumerable<T>` when using collections like `List<T>`, but you can also create it from an array:
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+IEnumerable<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+```
+
+#### CRUD Operations on IEnumerable<T>
+
+##### 1. Create
+
+You can create a collection that implements `IEnumerable<T>` using various collection types, such as `List<T>`, `Array`, or `HashSet<T>`. Here’s how you can create a `List<T>`:
+
+```csharp
+List<int> numbers = new List<int> { 1, 2, 3, 4, 5 }; // Create a List
+IEnumerable<int> enumerableNumbers = numbers; // Cast List to IEnumerable
+```
+
+##### 2. Read
+
+To read elements from an `IEnumerable<T>`, you can use a `foreach` loop:
+
+```csharp
+Console.WriteLine("Original collection:");
+foreach (var number in enumerableNumbers) {
+    Console.WriteLine(number);
+}
+```
+
+You can also use LINQ (Language Integrated Query) to query the collection:
+
+```csharp
+var evenNumbers = enumerableNumbers.Where(n => n % 2 == 0);
+Console.WriteLine("\nEven numbers:");
+foreach (var number in evenNumbers) {
+    Console.WriteLine(number);
+}
+```
+
+##### 3. Update
+
+Since `IEnumerable<T>` is a read-only interface, you cannot directly update elements. However, you can convert it to a more flexible collection type (like `List<T>`) to perform updates:
+
+```csharp
+// Convert IEnumerable to List to update elements
+List<int> numbersList = new List<int>(enumerableNumbers);
+numbersList[2] = 10; // Update the third element (3) to 10
+
+// Recast back to IEnumerable if needed
+enumerableNumbers = numbersList;
+```
+
+##### 4. Delete
+
+Similar to updates, you cannot directly delete items from an `IEnumerable<T>`. However, you can create a new collection without the unwanted items or use a list for more dynamic operations:
+
+```csharp
+// Convert IEnumerable to List to delete elements
+numbersList = new List<int>(enumerableNumbers);
+numbersList.Remove(2); // Remove the element with value 2
+
+// Recast back to IEnumerable if needed
+enumerableNumbers = numbersList;
+```
+
+#### Example of Full CRUD Operations
+
+Here is a complete example demonstrating CRUD operations using `IEnumerable<T>`:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program {
+    static void Main() {
+        // Create
+        List<int> numbersList = new List<int> { 1, 2, 3, 4, 5 };
+        IEnumerable<int> enumerableNumbers = numbersList;
+
+        // Read
+        Console.WriteLine("Original collection:");
+        foreach (var number in enumerableNumbers) {
+            Console.WriteLine(number);
+        }
+
+        // Update
+        numbersList[2] = 10; // Update the third element (3) to 10
+        enumerableNumbers = numbersList; // Recast to IEnumerable
+        Console.WriteLine("\nCollection after update:");
+        foreach (var number in enumerableNumbers) {
+            Console.WriteLine(number);
+        }
+
+        // Delete
+        numbersList.Remove(2); // Remove the element with value 2
+        enumerableNumbers = numbersList; // Recast to IEnumerable
+        Console.WriteLine("\nCollection after deletion:");
+        foreach (var number in enumerableNumbers) {
+            Console.WriteLine(number);
+        }
+    }
+}
+```
+
+#### Output
+When you run the above code, the output will be:
+
+```
+Original collection:
+1
+2
+3
+4
+5
+
+Collection after update:
+1
+2
+10
+4
+5
+
+Collection after deletion:
+1
+10
+4
+5
+```
+
 ### Linked Lists
 
 A linked list is a linear data structure where each element is a separate object, and each element (node) contains a reference (link) to the next node in the sequence.
