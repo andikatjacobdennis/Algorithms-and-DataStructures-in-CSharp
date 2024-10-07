@@ -142,6 +142,8 @@ Sure! Here's a consolidated view of both time and space complexity with examples
 
 ### Time and Space Complexity
 
+Time Complexity and Space Complexity are fundamental concepts in computer science and algorithm analysis, crucial for understanding the efficiency of algorithms. These concepts help developers evaluate how algorithms perform as the size of the input data increases, guiding them in choosing the right algorithms for their applications.
+
 #### 1. **O(1) - Constant Time / Space**
 
 - **Time Complexity Example:**
@@ -432,9 +434,7 @@ Sure! Here's a consolidated view of both time and space complexity with examples
 
 ### Summary of Time and Space Complexities
 
-| Notation   | Name                  | Time Complexity                  | Space Complexity
-
-                |
+| Notation   | Name                  | Time Complexity                  | Space Complexity |
 |------------|-----------------------|----------------------------------|---------------------------------|
 | O(1)       | Constant              | Fixed time                       | Constant                        |
 | O(log n)   | Logarithmic           | Decreases exponentially          | Logarithmic                    |
