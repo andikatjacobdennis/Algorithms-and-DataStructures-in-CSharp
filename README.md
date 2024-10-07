@@ -1601,11 +1601,11 @@ public class Graph {
 
 ## Algorithms
 
-## Sorting Algorithms
+### Sorting Algorithms
 
 Sorting algorithms are methods for arranging the elements of a list or array in a specific order, typically in ascending or descending order. Different sorting algorithms have different characteristics in terms of complexity, efficiency, and stability.
 
-### Bubble Sort
+#### Bubble Sort
 
 Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, indicating that the list is sorted.
 
@@ -1625,7 +1625,7 @@ public void BubbleSort(int[] array) {
 }
 ```
 
-### Selection Sort
+#### Selection Sort
 
 Selection Sort is an in-place comparison sorting algorithm that divides the input list into two parts: a sorted and an unsorted section. It repeatedly selects the smallest (or largest) element from the unsorted section and moves it to the end of the sorted section.
 
@@ -1649,7 +1649,7 @@ public void SelectionSort(int[] array) {
 }
 ```
 
-### Insertion Sort
+#### Insertion Sort
 
 Insertion Sort builds the final sorted array one item at a time. It takes each element from the input and finds the correct position for it in the sorted section by comparing it with the already sorted elements.
 
@@ -1670,7 +1670,7 @@ public void InsertionSort(int[] array) {
 }
 ```
 
-### Merge Sort
+#### Merge Sort
 
 Merge Sort is a divide-and-conquer algorithm that divides the unsorted list into n sublists, each containing one element, and then repeatedly merges sublists to produce new sorted sublists until there is only one sublist remaining.
 
@@ -1711,7 +1711,7 @@ private void Merge(int[] array, int[] left, int[] right) {
 }
 ```
 
-### Quick Sort
+#### Quick Sort
 
 Quick Sort is another divide-and-conquer algorithm that selects a 'pivot' element from the array and partitions the other elements into two sub-arrays according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.
 
@@ -1746,7 +1746,7 @@ private int Partition(int[] array, int low, int high) {
 }
 ```
 
-### Heap Sort
+#### Heap Sort
 
 Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure. It first builds a max heap from the input data and then repeatedly extracts the maximum element from the heap and rebuilds the heap until no elements remain.
 
