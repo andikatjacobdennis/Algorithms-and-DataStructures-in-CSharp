@@ -57,6 +57,7 @@
    - 4.3.3.2 [**Bellman-Ford Algorithm**](./6.3.2_Bellman_Ford_Algorithm.md)  
    - 4.3.3.3 [**Floyd-Warshall Algorithm**](./6.3.3_Floyd_Warshall_Algorithm.md)  
    - 4.3.3.4 [**A* Search Algorithm**](./6.3.4_A_Star_Search_Algorithm.md)  
+   - 4.3.3.5 [**Johnson's Algorithm**](./6.3.5_Johnsons_Algorithm.md)  
 
 4.3.4 [**Minimum Spanning Tree Algorithms**](./6.4_Minimum_Spanning_Tree_Algorithms.md)  
    - 4.3.4.1 [**Kruskal's Algorithm**](./6.4.1_Kruskals_Algorithm.md)  
@@ -68,11 +69,17 @@
    - 4.3.5.2 [**Edmonds-Karp Algorithm**](./6.5.2_Edmonds_Karp_Algorithm.md)  
    - 4.3.5.3 [**Dinic's Algorithm**](./6.5.3_Dinics_Algorithm.md)  
    - 4.3.5.4 [**Push-Relabel Algorithm**](./6.5.4_Push_Relabel_Algorithm.md)  
+   - 4.3.5.5 [**Max Flow Min Cut Theorem**](./6.5.5_Max_Flow_Min_Cut_Theorem.md)  
 
 4.3.6 [**Topological Sorting**](./6.6_Topological_Sorting.md)  
    - 4.3.6.1 [**Kahn's Algorithm**](./6.6.1_Kahns_Algorithm.md)  
    - 4.3.6.2 [**DFS-Based Topological Sort**](./6.6.2_DFS_Based_Topological_Sort.md)  
    - 4.3.6.3 [**Applications of Topological Sort**](./6.6.3_Applications_of_Topological_Sort.md)  
+
+4.3.7 [**Network Design Problems**](./6.7_Network_Design_Problems.md)  
+   - 4.3.7.1 [**Steiner Tree Problem**](./6.7.1_Steiner_Tree_Problem.md)  
+   - 4.3.7.2 [**Minimum Cost Network Flow**](./6.7.2_Minimum_Cost_Network_Flow.md)  
+   - 4.3.7.3 [**Multicast Routing**](./6.7.3_Multicast_Routing.md)  
 
 #### 4.4 Algorithmic Techniques
 4.4.1 [**Dynamic Programming**](./7.1_Dynamic_Programming.md)  
