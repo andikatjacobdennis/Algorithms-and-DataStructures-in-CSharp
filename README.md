@@ -151,7 +151,7 @@ In this document, we will explore various data structures and algorithms that ar
 
 Time Complexity and Space Complexity are fundamental concepts in computer science and algorithm analysis, crucial for understanding the efficiency of algorithms. These concepts help developers evaluate how algorithms perform as the size of the input data increases, guiding them in choosing the right algorithms for their applications.
 
-#### 1. **O(1) - Constant Time / Space**
+#### 1. O(1) - Constant Time / Space
 
 - **Time Complexity Example:**
   ```csharp
@@ -177,7 +177,7 @@ Time Complexity and Space Complexity are fundamental concepts in computer scienc
   - Only a constant amount of space is used for the output, irrespective of the input size.
   - Thus, space complexity is `O(1)`.
 
-#### 2. **O(log n) - Logarithmic Time / Space**
+#### 2. O(log n) - Logarithmic Time / Space
 
 - **Time Complexity Example:**
   ```csharp
@@ -217,7 +217,7 @@ Time Complexity and Space Complexity are fundamental concepts in computer scienc
   - The recursion stack grows with each call, and the depth of recursion is approximately `log n`.
   - Thus, space complexity is `O(log n)`.
 
-#### 3. **O(n) - Linear Time / Space**
+#### 3. O(n) - Linear Time / Space
 
 - **Time Complexity Example:**
   ```csharp
@@ -256,7 +256,7 @@ Time Complexity and Space Complexity are fundamental concepts in computer scienc
   ```
   - Thus, space complexity is `O(n)`.
 
-#### 4. **O(n log n) - Linearithmic Time / Space**
+#### 4. O(n log n) - Linearithmic Time / Space
 
 - **Time Complexity Example:**
   ```csharp
@@ -303,7 +303,7 @@ Time Complexity and Space Complexity are fundamental concepts in computer scienc
   **Space Complexity Calculation:**
   - The left and right subarrays require additional space of `O(n)`. Thus, space complexity remains `O(n)`.
 
-#### 5. **O(n²) - Quadratic Time / Space**
+#### 5. O(n²) - Quadratic Time / Space
 
 - **Time Complexity Example:**
   ```csharp
@@ -355,7 +355,7 @@ Time Complexity and Space Complexity are fundamental concepts in computer scienc
   - The matrix multiplication algorithm uses `O(1)` additional space apart from the input matrices.
   - Thus, space complexity is `O(1)`.
 
-#### 6. **O(2^n) - Exponential Time / Space**
+#### 6. O(2^n) - Exponential Time / Space
 
 - **Time Complexity Example:**
   ```csharp
@@ -391,7 +391,7 @@ Time Complexity and Space Complexity are fundamental concepts in computer scienc
   ```
   - Thus, space complexity is `O(n)`.
 
-#### 7. **O(n!) - Factorial Time / Space**
+#### 7. O(n!) - Factorial Time / Space
 
 - **Time Complexity Example:**
   ```csharp
