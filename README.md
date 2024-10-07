@@ -2091,17 +2091,3 @@ public int EdmondsKarp(int source, int sink) {
    - 15.1 **Randomized Contraction Algorithm for Minimum Cut**
    - 15.2 **Approximation Algorithms for TSP (Traveling Salesman Problem)**
 
-#### Depth-First Search (DFS)
-
-
-#### Breadth-First Search (BFS)
-
-
-#### Dijkstra's Algorithm
-
-#### Bellman-Ford Algorithm
-
-#### Floyd-Warshall Algorithm
-
-#### Edmonds-Karp Algorithm
-
