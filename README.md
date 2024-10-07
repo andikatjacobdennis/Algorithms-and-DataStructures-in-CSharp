@@ -154,7 +154,6 @@ public class ArrayExample
         return array[0]; // Get the first element (constant time)
     }
 }
-```
 
 **Explanation**: 
 - **Time Complexity Calculation**:
@@ -164,8 +163,6 @@ public class ArrayExample
   address = base\_address + index \times size\_of\_element
   ```
   - Therefore, regardless of the size of the array, accessing an element takes \(O(1)\) time.
-
----
 
 ### 2. **Linear Search - O(n)**
 
@@ -237,8 +234,6 @@ public class BinarySearchExample
   O(log n)
   ```
 
----
-
 ### 4. **Bubble Sort - O(n²)**
 
 **Description**: A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
@@ -279,8 +274,6 @@ public class BubbleSortExample
   O(n^2)
   ```
 
----
-
 ### 5. **Stack - O(1)**
 
 **Description**: A stack is a collection where you can only add or remove items from one end (the top).
@@ -312,75 +305,7 @@ public class StackExample
   O(1)
   ```
 
----
-
-### 6. **Queue - O(1)**
-
-**Description**: A queue is a collection where you can add items to one end (the back) and remove them from the other end (the front).
-
-```csharp
-using System.Collections.Generic;
-
-public class QueueExample
-{
-    private Queue<int> queue = new Queue<int>();
-
-    public void Enqueue(int value)
-    {
-        queue.Enqueue(value); // Add an item to the back of the queue
-    }
-
-    public int Dequeue()
-    {
-        return queue.Dequeue(); // Remove and return the front item
-    }
-}
-```
-
-**Explanation**: 
-- **Time Complexity Calculation**:
-  - The `Enqueue` operation adds an item to the back, and `Dequeue` removes an item from the front, both requiring no traversal of the queue.
-  - Therefore, the time complexity for both operations is:
-  ```math
-  O(1)
-  ```
-
----
-
-### 7. **Hash Table - O(1)**
-
-**Description**: A hash table allows you to store key-value pairs for quick retrieval.
-
-```csharp
-using System.Collections.Generic;
-
-public class HashTableExample
-{
-    private Dictionary<string, int> hashTable = new Dictionary<string, int>();
-
-    public void Add(string key, int value)
-    {
-        hashTable[key] = value; // Store value with a specific key
-    }
-
-    public int Get(string key)
-    {
-        return hashTable[key]; // Retrieve value using the key
-    }
-}
-```
-
-**Explanation**: 
-- **Time Complexity Calculation**:
-  - Adding and accessing elements are performed using a hash function, which computes the index in constant time on average.
-  - Under ideal conditions (no collisions), both operations are:
-  ```math
-  O(1)
-  ```
-
----
-
-### 8. **Factorial Calculation - O(n!)**
+### 6. **Factorial Calculation - O(n!)**
 
 **Description**: A method to calculate the factorial of a number using recursion.
 
