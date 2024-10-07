@@ -281,8 +281,6 @@ Collection after deletion:
 
 Here's an explanation of how to perform CRUD (Create, Read, Update, Delete) operations using `IQueryable<T>` in C#. The `IQueryable<T>` interface is an extension of `IEnumerable<T>` and is used primarily for querying data from a data source, especially in the context of LINQ (Language Integrated Query) and Entity Framework.
 
----
-
 ### IQueryable<T>
 
 `IQueryable<T>` is an interface that allows for querying data from a data source in a way that enables the execution of queries against a remote data source (like a database) while still providing the capabilities of LINQ. It provides a way to perform queries on data collections that may not be entirely loaded into memory, which makes it ideal for working with databases.
