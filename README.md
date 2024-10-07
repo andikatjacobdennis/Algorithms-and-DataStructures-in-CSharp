@@ -306,7 +306,9 @@ Time Complexity and Space Complexity are fundamental concepts in computer scienc
 | O(2^n)     | Exponential           | Exponential                     | Linear                          |
 | O(n!)      | Factorial             | Factorial                       | Linear                          |
 
-![Time_Space_Complexity_Chart](Time_Space_Complexity_Chart.jpg)
+![Time_Complexity_Chart](Time_Complexity_Chart.jpg)
+
+![Space_Complexity_Chart](Space_Complexity_Chart.jpg)
 
 ## Data Structures
 
