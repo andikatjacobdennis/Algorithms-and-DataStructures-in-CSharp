@@ -1701,10 +1701,6 @@ A **B-Tree** is a self-balancing tree data structure that maintains sorted data 
 - Storing and retrieving large datasets efficiently.
 - Maintaining sorted data in external storage systems.
 
-##### Implementation
-
-Here's a basic implementation of a B-Tree node class and the B-Tree structure itself:
-
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -1864,7 +1860,6 @@ class Program
 }
 ```
 
-##### Explanation:
 1. **BTreeNode Class**: This class defines a node in the B-Tree, containing an array of keys, an array of child nodes, the degree of the tree, the number of keys in the node, and a flag indicating if the node is a leaf.
 2. **BTree Class**: This class manages the overall B-Tree structure and contains methods for inserting keys and splitting child nodes.
 3. **Insert Method**: The method handles inserting a key into the B-Tree. It checks if the root is null or if it's full, and it appropriately splits the root if needed.
