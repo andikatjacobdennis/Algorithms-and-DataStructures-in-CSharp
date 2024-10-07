@@ -2,9 +2,38 @@
 
 In this document, we will explore various data structures and algorithms that are essential for efficient programming in C#. Understanding these concepts will help you write better code, optimize performance, and solve complex problems effectively.
 
-### Time and Space Complexity
+## Overview of Time and Space Complexity
 
-Time Complexity and Space Complexity are fundamental concepts in computer science and algorithm analysis, crucial for understanding the efficiency of algorithms. These concepts help developers evaluate how algorithms perform as the size of the input data increases, guiding them in choosing the right algorithms for their applications.
+Time and space complexity are essential concepts in computer science, particularly in the analysis of algorithms. They provide a framework for evaluating the efficiency of algorithms as input sizes grow, guiding developers in selecting appropriate algorithms for various applications.
+
+### **Time Complexity**
+
+Time complexity measures the amount of time an algorithm takes to complete as a function of the length of the input. It is often expressed using **Big O notation**, which describes the upper bound of an algorithm's running time. This notation helps classify algorithms according to their performance as the input size increases, allowing for comparisons across different algorithms.
+
+### **Types of Time Complexity**
+1. **Best Case**: The minimum time required for an algorithm to complete.
+2. **Worst Case**: The maximum time required, providing a guarantee on the longest time an algorithm will take.
+3. **Average Case**: The expected time taken for a typical input, calculated over all possible inputs.
+
+For example, a linear search algorithm has a time complexity of:
+- **O(1)** in the best case (when the desired element is the first element),
+- **O(n)** in the worst case (when the element is not present or is at the end).
+
+### **Space Complexity**
+
+Space complexity evaluates the amount of memory an algorithm requires relative to its input size. Like time complexity, it is also expressed using Big O notation and includes both:
+- **Fixed Part**: The space required for constants and variables.
+- **Variable Part**: The space required for dynamic allocations, such as arrays or linked lists.
+
+#### **In-Place Algorithms**
+Algorithms that use minimal extra space are termed "in-place." For instance, sorting algorithms like bubble sort have a space complexity of O(1) because they only require a constant amount of additional storage [4][5].
+
+### **Importance of Analyzing Algorithm Efficiency**
+
+Understanding both time and space complexity is crucial for several reasons:
+- **Performance Prediction**: It allows developers to predict how algorithms will perform under varying conditions without needing to implement them.
+- **Resource Management**: Efficient algorithms can significantly reduce resource consumption, which is vital in environments with limited resources.
+- **Algorithm Comparison**: By analyzing different algorithms, developers can select the most efficient one for their specific needs.
 
 #### 1. O(1) - Constant Time / Space
 
