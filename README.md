@@ -181,6 +181,7 @@ Time and space complexity are fundamental concepts in computer science and algor
 - **Focus on the Worst Case**: Big-O describes the worst-case scenario, giving an upper limit on the time or space complexity.
 - **Ignoring Constants and Lower Order Terms**: When expressing an algorithm's complexity, we ignore constant factors and lower-order terms, as they become insignificant for large input sizes.
 - **Example**: If an algorithm has a time complexity of \(3n^2 + 2n + 5\), in Big-O notation, we represent it as:
+
   ```math
   O(n^2)
   ```
