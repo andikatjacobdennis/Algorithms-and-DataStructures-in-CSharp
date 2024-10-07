@@ -1582,7 +1582,7 @@ public class Trie {
 }
 ```
 
-#### Graphs
+### Graphs
 
 A graph is a collection of nodes (vertices) and edges connecting them. It can be directed or undirected.
 
