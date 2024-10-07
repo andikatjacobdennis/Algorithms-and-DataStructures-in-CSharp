@@ -1,5 +1,3 @@
-Here’s the updated Table of Contents with the "Additional Algorithms" section renamed to a more specific and technical name:
-
 ## Table of Contents
 
 ### 1. Introduction
@@ -41,13 +39,40 @@ Here’s the updated Table of Contents with the "Additional Algorithms" section 
 4.2.4 [**Interpolation Search**](./5.4_Interpolation_Search.md)  
 4.2.5 [**Jump Search**](./5.5_Jump_Search.md)  
 
-#### 4.3 Graph Algorithms
+### 4.3 Graph Algorithms
 4.3.1 [**Graph Representation**](./6.1_Graph_Representation.md)  
+   - 4.3.1.1 [**Adjacency Matrix**](./6.1.1_Adjacency_Matrix.md)  
+   - 4.3.1.2 [**Adjacency List**](./6.1.2_Adjacency_List.md)  
+   - 4.3.1.3 [**Edge List**](./6.1.3_Edge_List.md)  
+   - 4.3.1.4 [**Incidence Matrix**](./6.1.4_Incidence_Matrix.md)  
+
 4.3.2 [**Graph Traversal Algorithms**](./6.2_Graph_Traversal_Algorithms.md)  
+   - 4.3.2.1 [**Depth-First Search (DFS)**](./6.2.1_Depth_First_Search.md)  
+   - 4.3.2.2 [**Breadth-First Search (BFS)**](./6.2.2_Breadth_First_Search.md)  
+   - 4.3.2.3 [**Iterative Deepening DFS**](./6.2.3_Iterative_Deepening_DFS.md)  
+   - 4.3.2.4 [**Bidirectional Search**](./6.2.4_Bidirectional_Search.md)  
+
 4.3.3 [**Shortest Path Algorithms**](./6.3_Shortest_Path_Algorithms.md)  
+   - 4.3.3.1 [**Dijkstra's Algorithm**](./6.3.1_Dijkstras_Algorithm.md)  
+   - 4.3.3.2 [**Bellman-Ford Algorithm**](./6.3.2_Bellman_Ford_Algorithm.md)  
+   - 4.3.3.3 [**Floyd-Warshall Algorithm**](./6.3.3_Floyd_Warshall_Algorithm.md)  
+   - 4.3.3.4 [**A* Search Algorithm**](./6.3.4_A_Star_Search_Algorithm.md)  
+
 4.3.4 [**Minimum Spanning Tree Algorithms**](./6.4_Minimum_Spanning_Tree_Algorithms.md)  
+   - 4.3.4.1 [**Kruskal's Algorithm**](./6.4.1_Kruskals_Algorithm.md)  
+   - 4.3.4.2 [**Prim's Algorithm**](./6.4.2_Prims_Algorithm.md)  
+   - 4.3.4.3 [**Borůvka's Algorithm**](./6.4.3_Boruvkas_Algorithm.md)  
+
 4.3.5 [**Flow Networks**](./6.5_Flow_Networks.md)  
+   - 4.3.5.1 [**Ford-Fulkerson Method**](./6.5.1_Ford_Fulkerson_Method.md)  
+   - 4.3.5.2 [**Edmonds-Karp Algorithm**](./6.5.2_Edmonds_Karp_Algorithm.md)  
+   - 4.3.5.3 [**Dinic's Algorithm**](./6.5.3_Dinics_Algorithm.md)  
+   - 4.3.5.4 [**Push-Relabel Algorithm**](./6.5.4_Push_Relabel_Algorithm.md)  
+
 4.3.6 [**Topological Sorting**](./6.6_Topological_Sorting.md)  
+   - 4.3.6.1 [**Kahn's Algorithm**](./6.6.1_Kahns_Algorithm.md)  
+   - 4.3.6.2 [**DFS-Based Topological Sort**](./6.6.2_DFS_Based_Topological_Sort.md)  
+   - 4.3.6.3 [**Applications of Topological Sort**](./6.6.3_Applications_of_Topological_Sort.md)  
 
 #### 4.4 Algorithmic Techniques
 4.4.1 [**Dynamic Programming**](./7.1_Dynamic_Programming.md)  
@@ -60,7 +85,3 @@ Here’s the updated Table of Contents with the "Additional Algorithms" section 
 ### 5. Complexity Analysis
 5.1 [**Time Complexity Analysis**](./8.1_Time_Complexity_Analysis.md)  
 5.2 [**Space Complexity Analysis**](./8.2_Space_Complexity_Analysis.md)  
-
----
-
-The "Additional Algorithms" section has been renamed to **Algorithmic Techniques** to provide a more technical focus. If you need further adjustments or more topics, feel free to ask!
