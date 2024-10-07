@@ -55,7 +55,3 @@
 ### 8. Complexity Analysis
 8.1 [**Time Complexity Analysis**](./8.1_Time_Complexity_Analysis.md)  
 8.2 [**Space Complexity Analysis**](./8.2_Space_Complexity_Analysis.md)
-
-### 9.Conclusion
-9.l[ **Summary of Key Concepts ** ]( ./9.l_Summary_of_Key_Concepts .md ) 
-9.l[ **Further Reading and Resources ** ]( ./9.l_Further_Reading_and_Resources .md ) 
