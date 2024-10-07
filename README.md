@@ -1,28 +1,3 @@
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Data Structures](#data-structures)
-  - [Arrays](#arrays)
-  - [Linked Lists](#linked-lists)
-  - [Stacks](#stacks)
-  - [Queues](#queues)
-  - [Hash Tables](#hash-tables)
-  - [Trees](#trees)
-  - [Graphs](#graphs)
-- [Algorithms](#algorithms)
-  - [Sorting Algorithms](#sorting-algorithms)
-    - [Bubble Sort](#bubble-sort)
-    - [Merge Sort](#merge-sort)
-    - [Quick Sort](#quick-sort)
-  - [Searching Algorithms](#searching-algorithms)
-    - [Linear Search](#linear-search)
-    - [Binary Search](#binary-search)
-  - [Graph Algorithms](#graph-algorithms)
-    - [Depth-First Search (DFS)](#depth-first-search-dfs)
-    - [Breadth-First Search (BFS)](#breadth-first-search-bfs)
-- [Conclusion](#conclusion)
-- [References](#references)
-
 ## Introduction
 
 In this document, we will explore various data structures and algorithms that are essential for efficient programming in C#. Understanding these concepts will help you write better code, optimize performance, and solve complex problems effectively.
