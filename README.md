@@ -1833,8 +1833,14 @@ public int BinarySearch(int[] arr, int target) {
 
 ### Graph Algorithms
 
-#### Depth-First Search (DFS)
+#### 1. **Graph Representations**
+   - 1.1 **Adjacency Matrix**
+   - 1.2 **Adjacency List**
+   - 1.3 **Edge List**
 
+#### 2. **Traversal Algorithms**
+   - 2.1 **Breadth-First Search (BFS)**
+   - 2.2 **Depth-First Search (DFS)**
 DFS is an algorithm for traversing or searching tree or graph data structures. It starts at the root and explores as far as possible along each branch before backtracking.
 
 ```csharp
@@ -1848,6 +1854,73 @@ public void DFS(int vertex, HashSet<int> visited) {
     }
 }
 ```
+
+#### 3. **Shortest Path Algorithms**
+   - 3.1 **Dijkstra's Algorithm**
+   - 3.2 **Bellman-Ford Algorithm**
+   - 3.3 **Floyd-Warshall Algorithm**
+   - 3.4 **A* Search Algorithm**
+   - 3.5 **Johnson's Algorithm**
+
+#### 4. **Minimum Spanning Tree (MST) Algorithms**
+   - 4.1 **Prim's Algorithm**
+   - 4.2 **Kruskal's Algorithm**
+   - 4.3 **Borůvka's Algorithm**
+
+#### 5. **Network Flow Algorithms**
+   - 5.1 **Ford-Fulkerson Algorithm**
+   - 5.2 **Edmonds-Karp Algorithm**
+   - 5.3 **Dinic's Algorithm**
+   - 5.4 **Push-Relabel Algorithm**
+
+#### 6. **Cycle Detection**
+   - 6.1 **Cycle Detection using DFS**
+   - 6.2 **Union-Find (Disjoint Set) for Cycle Detection**
+   - 6.3 **Tarjan’s Strongly Connected Components Algorithm**
+
+#### 7. **Topological Sorting**
+   - 7.1 **Kahn's Algorithm**
+   - 7.2 **Topological Sort using DFS**
+
+#### 8. **Graph Coloring Algorithms**
+   - 8.1 **Greedy Coloring**
+   - 8.2 **Backtracking Coloring**
+   - 8.3 **Welsh-Powell Algorithm**
+
+#### 9. **Strongly Connected Components (SCC) Algorithms**
+   - 9.1 **Kosaraju's Algorithm**
+   - 9.2 **Tarjan's Algorithm**
+   - 9.3 **Gabow's Algorithm**
+
+#### 10. **Bipartite Graph Algorithms**
+   - 10.1 **Bipartite Graph Check using BFS/DFS**
+   - 10.2 **Hopcroft-Karp Algorithm (Maximum Matching)**
+
+#### 11. **Eulerian and Hamiltonian Paths**
+   - 11.1 **Fleury's Algorithm (Eulerian Path)**
+   - 11.2 **Hierholzer's Algorithm (Eulerian Circuit)**
+   - 11.3 **Backtracking for Hamiltonian Path/Circuit**
+
+#### 12. **Matching and Covering Algorithms**
+   - 12.1 **Hungarian Algorithm (Maximum Bipartite Matching)**
+   - 12.2 **Blossom Algorithm for General Matching**
+   - 12.3 **Vertex Cover Problem**
+
+#### 13. **Planarity Testing**
+   - 13.1 **Kuratowski’s Theorem**
+   - 13.2 **Hopcroft and Tarjan’s Planarity Testing Algorithm**
+
+#### 14. **Graph Decomposition**
+   - 14.1 **Tree Decomposition**
+   - 14.2 **Graph Partitioning**
+   - 14.3 **Clique Decomposition**
+
+#### 15. **Randomized and Approximation Algorithms**
+   - 15.1 **Randomized Contraction Algorithm for Minimum Cut**
+   - 15.2 **Approximation Algorithms for TSP (Traveling Salesman Problem)**
+
+#### Depth-First Search (DFS)
+
 
 #### Breadth-First Search (BFS)
 
