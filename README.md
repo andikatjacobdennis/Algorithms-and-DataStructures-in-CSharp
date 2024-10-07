@@ -913,22 +913,122 @@ class Program {
 }
 ```
 
-### Queues
+### Queue<T>
 
-A queue is a collection of elements that follows the First In First Out (FIFO) principle. Elements are added at the back and removed from the front.
+A `Queue<T>` represents a collection designed to hold a sequence of elements in the order they were added. Items are added to the end and removed from the front, following the FIFO (First-In, First-Out) principle.
+
+#### Example Declaration
+
+You can declare a `Queue<T>` as follows:
 
 ```csharp
-public class Queue {
-    private List<int> elements = new List<int>();
+Queue<int> numbers = new Queue<int>();
+```
 
-    public void Enqueue(int item) {
-        elements.Add(item);
-    }
+#### CRUD Operations on Queue<T>
 
-    public int Dequeue() {
-        int firstItem = elements[0];
-        elements.RemoveAt(0);
-        return firstItem;
+##### 1. Create
+
+To create new items in a `Queue<T>`, you use the `Enqueue()` method, which adds an element to the end of the queue.
+
+```csharp
+// Create (Add new elements)
+numbers.Enqueue(1); // Adds 1 to the queue
+numbers.Enqueue(2); // Adds 2 to the queue
+numbers.Enqueue(3); // Adds 3 to the queue
+```
+
+##### 2. Read
+
+To read data from a `Queue<T>`, you can use the `Peek()` method to view the front element without removing it. The `Count` property allows you to check the number of elements in the queue.
+
+```csharp
+// Read the front element
+int frontElement = numbers.Peek();
+Console.WriteLine($"Front element: {frontElement}"); // Outputs: 1
+
+// Read the number of elements in the queue
+Console.WriteLine($"Number of elements in the queue: {numbers.Count}"); // Outputs: 3
+```
+
+##### 3. Update
+
+`Queue<T>` does not directly support updating elements because you can only access the front element. If you want to update an element, you would typically need to dequeue elements until you reach the one you want to modify, change it, and re-enqueue the rest of the elements.
+
+Here’s a workaround to update an element in the queue:
+
+```csharp
+// Update the front element
+if (numbers.Count > 0) {
+    // Remove the front element
+    int removedElement = numbers.Dequeue();
+    
+    // Modify the removed element
+    removedElement = 10;
+
+    // Re-add the updated element
+    numbers.Enqueue(removedElement);
+}
+
+// Note: The updated element will be added at the end of the queue.
+```
+
+If you want to update a specific item in the queue (other than the front element), it may require dequeuing and re-enqueuing all items, which is inefficient in most scenarios.
+
+##### 4. Delete
+
+To delete an item from the queue, you use the `Dequeue()` method, which removes and returns the front element of the queue.
+
+```csharp
+// Delete the front element
+int removedElement = numbers.Dequeue();
+Console.WriteLine($"Removed element: {removedElement}"); // Outputs: 1
+
+// Check the number of elements after removal
+Console.WriteLine($"Number of elements after dequeue: {numbers.Count}"); // Outputs: 2
+```
+
+#### Example of Full CRUD Operations
+
+Here’s a complete example demonstrating CRUD operations using `Queue<T>`:
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+class Program {
+    static void Main() {
+        // Create a Queue
+        Queue<int> numbers = new Queue<int>();
+
+        // Create: Adding new elements
+        numbers.Enqueue(1);
+        numbers.Enqueue(2);
+        numbers.Enqueue(3);
+
+        // Read: Display the front element
+        int frontElement = numbers.Peek();
+        Console.WriteLine($"Front element: {frontElement}"); // Outputs: 1
+
+        // Read: Count the number of elements
+        Console.WriteLine($"Number of elements in the queue: {numbers.Count}"); // Outputs: 3
+
+        // Update: Modify the front element
+        if (numbers.Count > 0) {
+            int removedElement = numbers.Dequeue();
+            removedElement = 10; // Update the value
+            numbers.Enqueue(removedElement); // Add the updated value back at the end of the queue
+        }
+
+        Console.WriteLine("\nAfter Update:");
+        frontElement = numbers.Peek();
+        Console.WriteLine($"Front element: {frontElement}"); // Outputs: 2
+
+        // Delete: Removing the front element
+        removedElement = numbers.Dequeue();
+        Console.WriteLine("\nAfter Deletion:");
+        Console.WriteLine($"Removed element: {removedElement}"); // Outputs: 2
+        Console.WriteLine($"Number of elements after dequeue: {numbers.Count}"); // Outputs: 1
     }
 }
 ```
