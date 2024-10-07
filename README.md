@@ -1,3 +1,5 @@
+Here’s the updated Table of Contents with the "Additional Algorithms" section renamed to a more specific and technical name:
+
 ## Table of Contents
 
 ### 1. Introduction
@@ -21,37 +23,44 @@
 3.10 [**Bloom Filters**](./3.10_Bloom_Filters.md)  
 3.11 [**Fenwick Tree (Binary Indexed Tree)**](./3.11_Fenwick_Tree_Binary_Indexed_Tree.md)  
 
-### 4. Sorting Algorithms
-4.1 [**Bubble Sort**](./4.1_Bubble_Sort.md)  
-4.2 [**Selection Sort**](./4.2_Selection_Sort.md)  
-4.3 [**Insertion Sort**](./4.3_Insertion_Sort.md)  
-4.4 [**Quick Sort**](./4.4_Quick_Sort.md)  
-4.5 [**Merge Sort**](./4.5_Merge_Sort.md)  
-4.6 [**Heap Sort**](./4.6_Heap_Sort.md)  
-4.7 [**Counting Sort**](./4.7_Counting_Sort.md)  
-4.8 [**Radix Sort**](./4.8_Radix_Sort.md)  
+### 4. Algorithms
+#### 4.1 Sorting Algorithms
+4.1.1 [**Bubble Sort**](./4.1_Bubble_Sort.md)  
+4.1.2 [**Selection Sort**](./4.2_Selection_Sort.md)  
+4.1.3 [**Insertion Sort**](./4.3_Insertion_Sort.md)  
+4.1.4 [**Quick Sort**](./4.4_Quick_Sort.md)  
+4.1.5 [**Merge Sort**](./4.5_Merge_Sort.md)  
+4.1.6 [**Heap Sort**](./4.6_Heap_Sort.md)  
+4.1.7 [**Counting Sort**](./4.7_Counting_Sort.md)  
+4.1.8 [**Radix Sort**](./4.8_Radix_Sort.md)  
 
-### 5. Searching Algorithms
-5.1 [**Linear Search**](./5.1_Linear_Search.md)  
-5.2 [**Binary Search**](./5.2_Binary_Search.md)  
-5.3 [**Exponential Search**](./5.3_Exponential_Search.md)  
-5.4 [**Interpolation Search**](./5.4_Interpolation_Search.md)  
-5.5 [**Jump Search**](./5.5_Jump_Search.md)  
+#### 4.2 Searching Algorithms
+4.2.1 [**Linear Search**](./5.1_Linear_Search.md)  
+4.2.2 [**Binary Search**](./5.2_Binary_Search.md)  
+4.2.3 [**Exponential Search**](./5.3_Exponential_Search.md)  
+4.2.4 [**Interpolation Search**](./5.4_Interpolation_Search.md)  
+4.2.5 [**Jump Search**](./5.5_Jump_Search.md)  
 
-### 6. Graph Algorithms
-6.1 [**Graph Representation**](./6.1_Graph_Representation.md)  
-6.2 [**Graph Traversal Algorithms**](./6.2_Graph_Traversal_Algorithms.md)  
-6.3 [**Shortest Path Algorithms**](./6.3_Shortest_Path_Algorithms.md)  
-6.4 [**Minimum Spanning Tree Algorithms**](./6.4_Minimum_Spanning_Tree_Algorithms.md)  
-6.5 [**Flow Networks**](./6.5_Flow_Networks.md)  
-6.6 [**Topological Sorting**](./6.6_Topological_Sorting.md)  
-6.7 [**Advanced Graph Algorithms**](./6.7_Advanced_Graph_Algorithms.md)  
+#### 4.3 Graph Algorithms
+4.3.1 [**Graph Representation**](./6.1_Graph_Representation.md)  
+4.3.2 [**Graph Traversal Algorithms**](./6.2_Graph_Traversal_Algorithms.md)  
+4.3.3 [**Shortest Path Algorithms**](./6.3_Shortest_Path_Algorithms.md)  
+4.3.4 [**Minimum Spanning Tree Algorithms**](./6.4_Minimum_Spanning_Tree_Algorithms.md)  
+4.3.5 [**Flow Networks**](./6.5_Flow_Networks.md)  
+4.3.6 [**Topological Sorting**](./6.6_Topological_Sorting.md)  
 
-### 7. Additional Algorithms
-7.1 [**Dynamic Programming**](./7.1_Dynamic_Programming.md)  
-7.2 [**Greedy Algorithms**](./7.2_Greedy_Algorithms.md)  
-7.3 [**Backtracking**](./7.3_Backtracking.md)  
+#### 4.4 Algorithmic Techniques
+4.4.1 [**Dynamic Programming**](./7.1_Dynamic_Programming.md)  
+4.4.2 [**Greedy Algorithms**](./7.2_Greedy_Algorithms.md)  
+4.4.3 [**Backtracking**](./7.3_Backtracking.md)  
+4.4.4 [**Bit Manipulation**](./7.4_Bit_Manipulation.md)  
+4.4.5 [**String Algorithms**](./7.5_String_Algorithms.md)  
+4.4.6 [**Matrix Algorithms**](./7.6_Matrix_Algorithms.md)  
 
-### 8. Complexity Analysis
-8.1 [**Time Complexity Analysis**](./8.1_Time_Complexity_Analysis.md)  
-8.2 [**Space Complexity Analysis**](./8.2_Space_Complexity_Analysis.md)
+### 5. Complexity Analysis
+5.1 [**Time Complexity Analysis**](./8.1_Time_Complexity_Analysis.md)  
+5.2 [**Space Complexity Analysis**](./8.2_Space_Complexity_Analysis.md)  
+
+---
+
+The "Additional Algorithms" section has been renamed to **Algorithmic Techniques** to provide a more technical focus. If you need further adjustments or more topics, feel free to ask!
