@@ -113,8 +113,6 @@ public class BinaryTreeNode {
 }
 ```
 
----
-
 ### Binary Search Trees (BST)
 
 A binary search tree is a binary tree with the additional property that for each node, all values in the left subtree are less than the node's value, and all values in the right subtree are greater. This property allows for efficient searching, insertion, and deletion operations.
@@ -160,8 +158,6 @@ public class BinarySearchTree {
     }
 }
 ```
-
----
 
 ### Heaps
 
@@ -226,8 +222,6 @@ public class MinHeap {
     }
 }
 ```
-
----
 
 ### Trie
 
@@ -309,60 +303,202 @@ public class Graph {
 
 ### Sorting Algorithms
 
-#### Bubble Sort
+Here’s an overview of sorting algorithms, including **Bubble Sort**, **Selection Sort**, **Insertion Sort**, **Merge Sort**, **Quick Sort**, and **Heap Sort**, along with sample C# code snippets for each.
 
-Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+---
+
+## Sorting Algorithms
+
+Sorting algorithms are methods for arranging the elements of a list or array in a specific order, typically in ascending or descending order. Different sorting algorithms have different characteristics in terms of complexity, efficiency, and stability.
+
+---
+
+### Bubble Sort
+
+Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, indicating that the list is sorted.
 
 ```csharp
-public void BubbleSort(int[] arr) {
-    for (int i = 0; i < arr.Length - 1; i++) {
-        for (int j = 0; j < arr.Length - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
+public void BubbleSort(int[] array) {
+    int n = array.Length;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
                 // Swap
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+                int temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
             }
         }
     }
 }
 ```
 
-#### Merge Sort
+### Selection Sort
 
-Merge sort is a divide-and-conquer algorithm that divides the array into halves, sorts them, and then merges them back together.
+Selection Sort is an in-place comparison sorting algorithm that divides the input list into two parts: a sorted and an unsorted section. It repeatedly selects the smallest (or largest) element from the unsorted section and moves it to the end of the sorted section.
 
 ```csharp
-public int[] MergeSort(int[] array) {
-    if (array.Length <= 1) return array;
-
-    int mid = array.Length / 2;
-    int[] left = MergeSort(array.Take(mid).ToArray());
-    int[] right = MergeSort(array.Skip(mid).ToArray());
-    
-    return Merge(left, right);
-}
-
-private int[] Merge(int[] left, int[] right) {
-    // Merging logic here
+public void SelectionSort(int[] array) {
+    int n = array.Length;
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (array[j] < array[minIndex]) {
+                minIndex = j;
+            }
+        }
+        // Swap
+        if (minIndex != i) {
+            int temp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = temp;
+        }
+    }
 }
 ```
 
-#### Quick Sort
+### Insertion Sort
 
-Quick sort is an efficient sorting algorithm that uses a divide-and-conquer strategy to sort elements.
+Insertion Sort builds the final sorted array one item at a time. It takes each element from the input and finds the correct position for it in the sorted section by comparing it with the already sorted elements.
 
 ```csharp
-public void QuickSort(int[] arr, int low, int high) {
+public void InsertionSort(int[] array) {
+    int n = array.Length;
+    for (int i = 1; i < n; i++) {
+        int key = array[i];
+        int j = i - 1;
+        
+        // Move elements that are greater than key to one position ahead
+        while (j >= 0 && array[j] > key) {
+            array[j + 1] = array[j];
+            j--;
+        }
+        array[j + 1] = key;
+    }
+}
+```
+
+### Merge Sort
+
+Merge Sort is a divide-and-conquer algorithm that divides the unsorted list into n sublists, each containing one element, and then repeatedly merges sublists to produce new sorted sublists until there is only one sublist remaining.
+
+```csharp
+public void MergeSort(int[] array) {
+    if (array.Length < 2) return;
+
+    int mid = array.Length / 2;
+    int[] left = new int[mid];
+    int[] right = new int[array.Length - mid];
+
+    Array.Copy(array, 0, left, 0, mid);
+    Array.Copy(array, mid, right, 0, array.Length - mid);
+
+    MergeSort(left);
+    MergeSort(right);
+    Merge(array, left, right);
+}
+
+private void Merge(int[] array, int[] left, int[] right) {
+    int i = 0, j = 0, k = 0;
+
+    while (i < left.Length && j < right.Length) {
+        if (left[i] <= right[j]) {
+            array[k++] = left[i++];
+        } else {
+            array[k++] = right[j++];
+        }
+    }
+
+    while (i < left.Length) {
+        array[k++] = left[i++];
+    }
+
+    while (j < right.Length) {
+        array[k++] = right[j++];
+    }
+}
+```
+
+### Quick Sort
+
+Quick Sort is another divide-and-conquer algorithm that selects a 'pivot' element from the array and partitions the other elements into two sub-arrays according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.
+
+```csharp
+public void QuickSort(int[] array, int low, int high) {
     if (low < high) {
-        int pi = Partition(arr, low, high);
-        QuickSort(arr, low, pi - 1);
-        QuickSort(arr, pi + 1, high);
+        int pivotIndex = Partition(array, low, high);
+        QuickSort(array, low, pivotIndex - 1);
+        QuickSort(array, pivotIndex + 1, high);
     }
 }
 
-private int Partition(int[] arr, int low, int high) {
-    // Partitioning logic here
+private int Partition(int[] array, int low, int high) {
+    int pivot = array[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (array[j] < pivot) {
+            i++;
+            // Swap
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+    // Swap pivot
+    int temp1 = array[i + 1];
+    array[i + 1] = array[high];
+    array[high] = temp1;
+
+    return i + 1;
+}
+```
+
+### Heap Sort
+
+Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure. It first builds a max heap from the input data and then repeatedly extracts the maximum element from the heap and rebuilds the heap until no elements remain.
+
+```csharp
+public void HeapSort(int[] array) {
+    int n = array.Length;
+
+    // Build max heap
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        Heapify(array, n, i);
+    }
+
+    // Extract elements from heap
+    for (int i = n - 1; i > 0; i--) {
+        // Move current root to end
+        int temp = array[0];
+        array[0] = array[i];
+        array[i] = temp;
+
+        // Call max heapify on the reduced heap
+        Heapify(array, i, 0);
+    }
+}
+
+private void Heapify(int[] array, int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n && array[left] > array[largest]) {
+        largest = left;
+    }
+
+    if (right < n && array[right] > array[largest]) {
+        largest = right;
+    }
+
+    if (largest != i) {
+        int temp = array[i];
+        array[i] = array[largest];
+        array[largest] = temp;
+
+        Heapify(array, n, largest);
+    }
 }
 ```
 
