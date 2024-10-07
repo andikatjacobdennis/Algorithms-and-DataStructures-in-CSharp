@@ -1731,6 +1731,10 @@ public class Trie {
 
 A graph is a collection of nodes (vertices) and edges connecting them. It can be directed or undirected.
 
+**Use Cases:** 
+- **Network Analysis for Sales Channels:** Model relationships between different sales channels and their performance metrics.
+- **Customer Relationship Mapping:** Visualize connections between customers based on purchasing behavior and referrals.
+
 ```csharp
 public class Graph {
     private Dictionary<int, List<int>> adjacencyList = new Dictionary<int, List<int>>();
@@ -1842,10 +1846,6 @@ Here are the use cases for each data structure in the context of product and sal
 Avoid trees when dealing with small datasets or when simpler structures (like arrays or lists) would suffice, as they introduce unnecessary complexity.
 
 ### 13. Graphs
-
-**Use Cases:** 
-- **Network Analysis for Sales Channels:** Model relationships between different sales channels and their performance metrics.
-- **Customer Relationship Mapping:** Visualize connections between customers based on purchasing behavior and referrals.
 
 ## Algorithms
 
