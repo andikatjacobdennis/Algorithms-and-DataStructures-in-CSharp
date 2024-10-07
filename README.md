@@ -138,6 +138,270 @@
 
 In this document, we will explore various data structures and algorithms that are essential for efficient programming in C#. Understanding these concepts will help you write better code, optimize performance, and solve complex problems effectively.
 
+## Big-O Notation
+
+### 1. **Array - O(1)**
+
+**Description**: Access an element in an array using its index.
+
+```csharp
+public class ArrayExample
+{
+    public int GetFirstElement(int[] array)
+    {
+        return array[0]; // Get the first element (constant time)
+    }
+}
+```
+
+**Explanation**: 
+- **Time Complexity Calculation**:
+  - The operation to access any index in an array takes a constant amount of time because it involves simple pointer arithmetic.
+  - Formula to calculate the address of the element:
+    \[
+    \text{address} = \text{base address} + \text{index} \times \text{size of element}
+    \]
+  - Therefore, regardless of the size of the array, accessing an element takes \(O(1)\) time.
+
+---
+
+### 2. **Linear Search - O(n)**
+
+**Description**: Search for a number in an array by checking each element one by one.
+
+```csharp
+public class LinearSearchExample
+{
+    public int FindNumber(int[] array, int target)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] == target)
+                return i; // Return the index if found
+        }
+        return -1; // Return -1 if not found
+    }
+}
+```
+
+**Explanation**: 
+- **Time Complexity Calculation**:
+  - In the worst-case scenario, you may need to check every element in the array. 
+  - If the array contains \(n\) elements, the maximum number of checks will be \(n\).
+  - Therefore, the time complexity is:
+  \[
+  O(n)
+  \]
+
+---
+
+### 3. **Binary Search - O(log n)**
+
+**Description**: Search for a number in a sorted array by dividing the array in half each time.
+
+```csharp
+public class BinarySearchExample
+{
+    public int BinarySearch(int[] array, int target)
+    {
+        int left = 0;
+        int right = array.Length - 1;
+
+        while (left <= right)
+        {
+            int mid = left + (right - left) / 2;
+
+            if (array[mid] == target)
+                return mid; // Found the target
+            else if (array[mid] < target)
+                left = mid + 1; // Search in the right half
+            else
+                right = mid - 1; // Search in the left half
+        }
+        return -1; // Target not found
+    }
+}
+```
+
+**Explanation**: 
+- **Time Complexity Calculation**:
+  - Each iteration of the loop halves the size of the search space.
+  - The number of iterations needed to reduce \(n\) elements to 1 can be expressed as:
+    \[
+    n / 2^k = 1 \implies k = \log_2(n)
+    \]
+  - Thus, the time complexity is:
+  \[
+  O(\log n)
+  \]
+
+---
+
+### 4. **Bubble Sort - O(n²)**
+
+**Description**: A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+
+```csharp
+public class BubbleSortExample
+{
+    public void BubbleSort(int[] array)
+    {
+        int n = array.Length;
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                if (array[j] > array[j + 1])
+                {
+                    // Swap
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp; // Sorting the array
+                }
+            }
+        }
+    }
+}
+```
+
+**Explanation**: 
+- **Time Complexity Calculation**:
+  - The outer loop runs \(n-1\) times. 
+  - The inner loop compares adjacent elements, which can run up to \(n-i-1\) times.
+  - The total number of comparisons can be approximated as:
+    \[
+    \sum_{i=0}^{n-1} (n-i-1) \approx \frac{(n-1)n}{2} \approx O(n^2)
+    \]
+  - Therefore, the time complexity is:
+  \[
+  O(n^2)
+  \]
+
+---
+
+### 5. **Stack - O(1)**
+
+**Description**: A stack is a collection where you can only add or remove items from one end (the top).
+
+```csharp
+using System.Collections.Generic;
+
+public class StackExample
+{
+    private Stack<int> stack = new Stack<int>();
+
+    public void Push(int value)
+    {
+        stack.Push(value); // Add an item to the top of the stack
+    }
+
+    public int Pop()
+    {
+        return stack.Pop(); // Remove and return the top item
+    }
+}
+```
+
+**Explanation**: 
+- **Time Complexity Calculation**:
+  - Both `Push` and `Pop` operations are performed at the top of the stack and do not require iterating through elements.
+  - Each operation is executed in constant time, leading to:
+  \[
+  O(1)
+  \]
+
+---
+
+### 6. **Queue - O(1)**
+
+**Description**: A queue is a collection where you can add items to one end (the back) and remove them from the other end (the front).
+
+```csharp
+using System.Collections.Generic;
+
+public class QueueExample
+{
+    private Queue<int> queue = new Queue<int>();
+
+    public void Enqueue(int value)
+    {
+        queue.Enqueue(value); // Add an item to the back of the queue
+    }
+
+    public int Dequeue()
+    {
+        return queue.Dequeue(); // Remove and return the front item
+    }
+}
+```
+
+**Explanation**: 
+- **Time Complexity Calculation**:
+  - The `Enqueue` operation adds an item to the back, and `Dequeue` removes an item from the front, both requiring no traversal of the queue.
+  - Therefore, the time complexity for both operations is:
+  \[
+  O(1)
+  \]
+
+---
+
+### 7. **Hash Table - O(1)**
+
+**Description**: A hash table allows you to store key-value pairs for quick retrieval.
+
+```csharp
+using System.Collections.Generic;
+
+public class HashTableExample
+{
+    private Dictionary<string, int> hashTable = new Dictionary<string, int>();
+
+    public void Add(string key, int value)
+    {
+        hashTable[key] = value; // Store value with a specific key
+    }
+
+    public int Get(string key)
+    {
+        return hashTable[key]; // Retrieve value using the key
+    }
+}
+```
+
+**Explanation**: 
+- **Time Complexity Calculation**:
+  - Adding and accessing elements are performed using a hash function, which computes the index in constant time on average.
+  - Under ideal conditions (no collisions), both operations are:
+  \[
+  O(1)
+  \]
+
+---
+
+### 8. **Factorial Calculation - O(n!)**
+
+**Description**: A method to calculate the factorial of a number using recursion.
+
+```csharp
+public class FactorialExample
+{
+    public int Factorial(int n)
+    {
+        if (n <= 1)
+            return 1; // Base case
+        return n * Factorial(n - 1); // Recursive call
+    }
+}
+```
+
+**Explanation**: 
+- **Time Complexity Calculation**:
+  - Each call to the `Factorial` method generates another call until it reaches 1. This creates a tree-like structure with multiple branches, leading to:
+  - For \(n\), the function makes \(n\) calls, each branching out as it goes deeper, leading to:
+  \[
+  O(n!)
+  \]
+
 ## Data Structures
 
 ### Arrays
