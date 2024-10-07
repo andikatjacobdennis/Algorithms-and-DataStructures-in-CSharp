@@ -1,7 +1,3 @@
-Here’s the numbered **Table of Contents** with all the subtopics assigned proper numbering:
-
----
-
 ## Table of Contents
 
 ### 1. Introduction
