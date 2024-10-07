@@ -132,7 +132,7 @@ In this document, we will explore various data structures and algorithms that ar
 
 ### Arrays
 
-Arrays are a collection of elements identified by index or key. They are used to store multiple values in a single variable. In C#, arrays are of fixed size and can hold elements of the same data type.
+Arrays are a collection of elements identified by index or key. They are used to store multiple values in a single variable. In C#, arrays are of fixed size and can hold elements of the same data type. Arrays are reference types. This means that when you create an array, the variable you assign the array to holds a reference (or pointer) to the actual memory location where the array elements are stored. The elements themselves can be value types or reference types, but the array itself is a reference type.
 
 **Use Cases:**
 - **Fixed Product Catalog**: Use arrays to store a fixed list of products, such as the days of a sale event.
@@ -253,6 +253,8 @@ class Program {
 #### Output
 When you run the above code, the output will be:
 
+####
+
 ```
 Original array:
 1
@@ -273,6 +275,65 @@ Array after deletion:
 10
 4
 5
+```
+
+#### Get memory address of the array
+
+You will need to enable unsafe code in your project settings to compile this:
+1. Right-click on your project in Visual Studio.
+2. Go to **Properties**.
+3. In the **Build** tab, check **Allow unsafe code**.
+
+```csharp
+using System;
+
+unsafe class Program
+{
+    static void Main()
+    {
+        int[] array = { 1, 2, 3, 4, 5 };
+
+        fixed (int* p = array)
+        {
+            Console.WriteLine($"Memory address of array: {(long)p}");
+        }
+    }
+}
+```
+
+#### 2D Array
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Declare and initialize a 2D array with 3 rows and 4 columns
+        int[,] array2D = new int[3, 4]
+        {
+            { 1, 2, 3, 4 },
+            { 5, 6, 7, 8 },
+            { 9, 10, 11, 12 }
+        };
+
+        // Get the number of rows and columns
+        int rows = array2D.GetLength(0); // Number of rows
+        int columns = array2D.GetLength(1); // Number of columns
+
+        // Print the 2D array
+        Console.WriteLine("2D Array:");
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                Console.Write(array2D[i, j] + "\t");
+            }
+            Console.WriteLine(); // New line after each row
+        }
+    }
+}
 ```
 
 ### IEnumerable<T>
