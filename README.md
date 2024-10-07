@@ -1,6 +1,6 @@
 ## Table of Contents
 
-### 1. Introduction
+### 1. [Introduction](./1._Introduction.md)
 1.1 [**Overview of Algorithms and Data Structures**](./1.1_Overview_of_Algorithms_and_Data_Structures.md)  
 1.2 [**Importance in C# Programming**](./1.2_Importance_in_CSharp_Programming.md)  
 
