@@ -40,7 +40,7 @@
 4.2.5 [**Jump Search**](./5.5_Jump_Search.md)  
 
 ### [4.3 Graph Algorithms](4.3_Graph_Algorithms.md)
-4.3.1 [**Graph Representation**](./6.1_Graph_Representation.md)  
+4.3.1 [**Graph Representation**](./4.3.1_Graph_Representation.md)  
    - 4.3.1.1 [**Adjacency Matrix**](./6.1.1_Adjacency_Matrix.md)  
    - 4.3.1.2 [**Adjacency List**](./6.1.2_Adjacency_List.md)  
    - 4.3.1.3 [**Edge List**](./6.1.3_Edge_List.md)  
