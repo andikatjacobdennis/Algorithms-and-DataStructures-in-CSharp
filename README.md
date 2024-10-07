@@ -140,6 +140,8 @@ In this document, we will explore various data structures and algorithms that ar
 
 ## Big-O Notation
 
+Sure! Here’s the enhanced version with the mathematical parts properly formatted using code blocks.
+
 ### 1. **Array - O(1)**
 
 **Description**: Access an element in an array using its index.
@@ -158,9 +160,9 @@ public class ArrayExample
 - **Time Complexity Calculation**:
   - The operation to access any index in an array takes a constant amount of time because it involves simple pointer arithmetic.
   - Formula to calculate the address of the element:
-    \[
-    \text{address} = \text{base address} + \text{index} \times \text{size of element}
-    \]
+  ```math
+  address = base\_address + index \times size\_of\_element
+  ```
   - Therefore, regardless of the size of the array, accessing an element takes \(O(1)\) time.
 
 ---
@@ -189,9 +191,9 @@ public class LinearSearchExample
   - In the worst-case scenario, you may need to check every element in the array. 
   - If the array contains \(n\) elements, the maximum number of checks will be \(n\).
   - Therefore, the time complexity is:
-  \[
+  ```math
   O(n)
-  \]
+  ```
 
 ---
 
@@ -227,13 +229,13 @@ public class BinarySearchExample
 - **Time Complexity Calculation**:
   - Each iteration of the loop halves the size of the search space.
   - The number of iterations needed to reduce \(n\) elements to 1 can be expressed as:
-    \[
-    n / 2^k = 1 \implies k = \log_2(n)
-    \]
+  ```math
+  n / 2^k = 1 \implies k = \log_2(n)
+  ```
   - Thus, the time complexity is:
-  \[
-  O(\log n)
-  \]
+  ```math
+  O(log n)
+  ```
 
 ---
 
@@ -269,13 +271,13 @@ public class BubbleSortExample
   - The outer loop runs \(n-1\) times. 
   - The inner loop compares adjacent elements, which can run up to \(n-i-1\) times.
   - The total number of comparisons can be approximated as:
-    \[
-    \sum_{i=0}^{n-1} (n-i-1) \approx \frac{(n-1)n}{2} \approx O(n^2)
-    \]
+  ```math
+  \sum_{i=0}^{n-1} (n-i-1) \approx \frac{(n-1)n}{2} \approx O(n^2)
+  ```
   - Therefore, the time complexity is:
-  \[
+  ```math
   O(n^2)
-  \]
+  ```
 
 ---
 
@@ -306,9 +308,9 @@ public class StackExample
 - **Time Complexity Calculation**:
   - Both `Push` and `Pop` operations are performed at the top of the stack and do not require iterating through elements.
   - Each operation is executed in constant time, leading to:
-  \[
+  ```math
   O(1)
-  \]
+  ```
 
 ---
 
@@ -339,9 +341,9 @@ public class QueueExample
 - **Time Complexity Calculation**:
   - The `Enqueue` operation adds an item to the back, and `Dequeue` removes an item from the front, both requiring no traversal of the queue.
   - Therefore, the time complexity for both operations is:
-  \[
+  ```math
   O(1)
-  \]
+  ```
 
 ---
 
@@ -372,9 +374,9 @@ public class HashTableExample
 - **Time Complexity Calculation**:
   - Adding and accessing elements are performed using a hash function, which computes the index in constant time on average.
   - Under ideal conditions (no collisions), both operations are:
-  \[
+  ```math
   O(1)
-  \]
+  ```
 
 ---
 
@@ -396,12 +398,12 @@ public class FactorialExample
 
 **Explanation**: 
 - **Time Complexity Calculation**:
-  - Each call to the `Factorial` method generates another call until it reaches 1. This creates a tree-like structure with multiple branches, leading to:
+  - Each call to the `Factorial` method generates another call until it reaches 1. This creates a tree-like structure with multiple branches.
   - For \(n\), the function makes \(n\) calls, each branching out as it goes deeper, leading to:
-  \[
+  ```math
   O(n!)
-  \]
-
+  ```
+  
 ## Data Structures
 
 ### Arrays
