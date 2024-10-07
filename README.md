@@ -1269,6 +1269,119 @@ class Program {
 }
 ```
 
+### ConcurrentDictionary<TKey, TValue>
+
+`ConcurrentDictionary<TKey, TValue>` is a collection that stores key-value pairs, where each key must be unique. It is designed to handle multi-threaded scenarios, allowing safe access and modification of the dictionary from multiple threads without the need for external synchronization.
+
+#### Example Declaration
+
+You can declare a `ConcurrentDictionary<TKey, TValue>` as follows:
+
+```csharp
+using System.Collections.Concurrent;
+
+ConcurrentDictionary<int, string> students = new ConcurrentDictionary<int, string>();
+```
+
+#### CRUD Operations on ConcurrentDictionary<TKey, TValue>
+
+##### 1. Create
+
+To add new key-value pairs to a `ConcurrentDictionary<TKey, TValue>`, you can use the `TryAdd()` method or the indexer.
+
+```csharp
+// Create (Add new key-value pairs)
+students.TryAdd(1, "Alice"); // Adds a new entry with key 1 and value "Alice"
+students[2] = "Bob"; // Adds a new entry with key 2 and value "Bob"
+```
+
+##### 2. Read
+
+To read data from a `ConcurrentDictionary<TKey, TValue>`, you can use the indexer to access a value by its key. The `TryGetValue()` method allows you to check if a key exists and retrieve the corresponding value.
+
+```csharp
+// Read the value for a specific key
+if (students.TryGetValue(1, out string studentName)) {
+    Console.WriteLine($"Student with ID 1: {studentName}"); // Outputs: Alice
+}
+
+// Read all key-value pairs
+foreach (var kvp in students) {
+    Console.WriteLine($"ID: {kvp.Key}, Name: {kvp.Value}");
+}
+```
+
+##### 3. Update
+
+To update an existing value in the dictionary, you can use the indexer to set the value for a specific key. If the key does not exist, it will add a new entry.
+
+```csharp
+// Update the value for an existing key
+students[1] = "Alice Johnson"; // Updates the name for key 1
+
+// Check the updated value
+Console.WriteLine($"Updated student with ID 1: {students[1]}"); // Outputs: Alice Johnson
+```
+
+##### 4. Delete
+
+To delete a key-value pair from the dictionary, you use the `TryRemove()` method, which safely removes the entry with the specified key.
+
+```csharp
+// Delete a key-value pair
+if (students.TryRemove(2, out string removedStudent)) {
+    Console.WriteLine($"Student with ID 2 has been removed: {removedStudent}");
+}
+
+// Check the number of entries after removal
+Console.WriteLine($"Number of students after removal: {students.Count}"); // Outputs: 1
+```
+
+#### Example of Full CRUD Operations
+
+Here’s a complete example demonstrating CRUD operations using `ConcurrentDictionary<TKey, TValue>`:
+
+```csharp
+using System;
+using System.Collections.Concurrent;
+
+class Program {
+    static void Main() {
+        // Create a ConcurrentDictionary
+        ConcurrentDictionary<int, string> students = new ConcurrentDictionary<int, string>();
+
+        // Create: Adding new key-value pairs
+        students.TryAdd(1, "Alice");
+        students[2] = "Bob";
+
+        // Read: Display a specific student's name
+        if (students.TryGetValue(1, out string studentName)) {
+            Console.WriteLine($"Student with ID 1: {studentName}"); // Outputs: Alice
+        }
+
+        // Read: Display all students
+        Console.WriteLine("\nAll students:");
+        foreach (var kvp in students) {
+            Console.WriteLine($"ID: {kvp.Key}, Name: {kvp.Value}");
+        }
+
+        // Update: Modify an existing student's name
+        students[1] = "Alice Johnson"; // Update the name for key 1
+
+        Console.WriteLine("\nAfter Update:");
+        Console.WriteLine($"Updated student with ID 1: {students[1]}"); // Outputs: Alice Johnson
+
+        // Delete: Remove a student
+        if (students.TryRemove(2, out string removedStudent)) {
+            Console.WriteLine($"\nStudent with ID 2 has been removed: {removedStudent}");
+        }
+
+        // Check the number of entries after removal
+        Console.WriteLine($"Number of students after removal: {students.Count}"); // Outputs: 1
+    }
+}
+```
+
 ## Trees
 
 A tree is a hierarchical data structure consisting of nodes, where each node contains a value and references to its child nodes. The topmost node is called the root, and each node can have zero or more child nodes. Trees are used in various applications, such as representing hierarchical data (e.g., file systems) and enabling efficient search operations.
