@@ -231,6 +231,10 @@ public int BinarySearch(int[] arr, int target) {
 
 ### Graph Algorithms
 
+Here's an updated version of your **Graph Algorithms** section, including **Edmonds-Karp** and **All Paths** algorithms along with the previously mentioned ones:
+
+### Graph Algorithms
+
 #### Depth-First Search (DFS)
 
 DFS is an algorithm for traversing or searching tree or graph data structures. It starts at the root and explores as far as possible along each branch before backtracking.
@@ -269,5 +273,177 @@ public void BFS(int start) {
             }
         }
     }
+}
+```
+
+#### Dijkstra's Algorithm
+
+Dijkstra's algorithm finds the shortest path between nodes in a graph. It assigns a tentative distance value to every node and updates it as shorter paths are discovered.
+
+```csharp
+public int[] Dijkstra(int start) {
+    var distances = new Dictionary<int, int>();
+    var priorityQueue = new SortedSet<(int distance, int vertex)>();
+
+    foreach (var vertex in adjacencyList.Keys) {
+        distances[vertex] = int.MaxValue;
+    }
+    distances[start] = 0;
+    priorityQueue.Add((0, start));
+
+    while (priorityQueue.Count > 0) {
+        var (currentDistance, currentVertex) = priorityQueue.Min;
+        priorityQueue.Remove(priorityQueue.Min);
+
+        foreach (var neighbor in adjacencyList[currentVertex]) {
+            int newDistance = currentDistance + 1; // assuming all edges have weight 1
+
+            if (newDistance < distances[neighbor]) {
+                distances[neighbor] = newDistance;
+                priorityQueue.Add((newDistance, neighbor));
+            }
+        }
+    }
+
+    return distances;
+}
+```
+
+#### Bellman-Ford Algorithm
+
+The Bellman-Ford algorithm computes the shortest paths from a single source vertex to all other vertices in a graph, handling graphs with negative weight edges.
+
+```csharp
+public void BellmanFord(int start) {
+    Dictionary<int, int> distances = new Dictionary<int, int>();
+    
+    foreach (var vertex in adjacencyList.Keys) {
+        distances[vertex] = int.MaxValue;
+    }
+    distances[start] = 0;
+
+    foreach (var vertex in adjacencyList.Keys) {
+        foreach (var neighbor in adjacencyList[vertex]) {
+            // Assuming you have a way to get the weight of the edges
+            int weight = 1; // replace with actual edge weight retrieval logic
+            if (distances[vertex] + weight < distances[neighbor]) {
+                distances[neighbor] = distances[vertex] + weight;
+            }
+        }
+    }
+}
+```
+
+#### Floyd-Warshall Algorithm
+
+The Floyd-Warshall algorithm finds the shortest paths between all pairs of vertices in a weighted graph.
+
+```csharp
+public int[,] FloydWarshall(int vertexCount) {
+    int[,] distances = new int[vertexCount, vertexCount];
+
+    // Initialize distances
+    for (int i = 0; i < vertexCount; i++) {
+        for (int j = 0; j < vertexCount; j++) {
+            distances[i, j] = (i == j) ? 0 : int.MaxValue;
+        }
+    }
+
+    // Set distances for direct edges
+    foreach (var vertex in adjacencyList.Keys) {
+        foreach (var neighbor in adjacencyList[vertex]) {
+            distances[vertex, neighbor] = 1; // assuming all edges have weight 1
+        }
+    }
+
+    // Update distances
+    for (int k = 0; k < vertexCount; k++) {
+        for (int i = 0; i < vertexCount; i++) {
+            for (int j = 0; j < vertexCount; j++) {
+                if (distances[i, j] > distances[i, k] + distances[k, j]) {
+                    distances[i, j] = distances[i, k] + distances[k, j];
+                }
+            }
+        }
+    }
+
+    return distances;
+}
+```
+
+#### Edmonds-Karp Algorithm
+
+The Edmonds-Karp algorithm is an implementation of the Ford-Fulkerson method for computing the maximum flow in a flow network.
+
+```csharp
+public int EdmondsKarp(int source, int sink) {
+    int maxFlow = 0;
+    // Create a residual graph
+    var residualGraph = new Dictionary<int, List<int>>();
+    // Initialize capacities in the residual graph
+
+    while (true) {
+        var parent = new Dictionary<int, int>();
+        var visited = new HashSet<int>();
+        var queue = new Queue<int>();
+        queue.Enqueue(source);
+        visited.Add(source);
+
+        while (queue.Count > 0) {
+            int current = queue.Dequeue();
+            if (current == sink) break;
+
+            foreach (var neighbor in residualGraph[current]) {
+                if (!visited.Contains(neighbor) && capacity[current, neighbor] > 0) {
+                    parent[neighbor] = current;
+                    visited.Add(neighbor);
+                    queue.Enqueue(neighbor);
+                }
+            }
+        }
+
+        // Check if we reached sink
+        if (!visited.Contains(sink)) break;
+
+        // Find the maximum flow through the path found
+        int pathFlow = int.MaxValue;
+        for (int v = sink; v != source; v = parent[v]) {
+            int u = parent[v];
+            pathFlow = Math.Min(pathFlow, capacity[u, v]);
+        }
+
+        // update residual capacities of the edges and reverse edges
+        for (int v = sink; v != source; v = parent[v]) {
+            int u = parent[v];
+            capacity[u, v] -= pathFlow;
+            capacity[v, u] += pathFlow;
+        }
+
+        maxFlow += pathFlow;
+    }
+
+    return maxFlow;
+}
+```
+
+#### All Paths Algorithm
+
+The All Paths algorithm finds all paths from a source vertex to a target vertex in a graph.
+
+```csharp
+public void FindAllPaths(int start, int target, List<int> path, List<List<int>> allPaths) {
+    path.Add(start);
+
+    if (start == target) {
+        allPaths.Add(new List<int>(path));
+    } else {
+        foreach (var neighbor in adjacencyList[start]) {
+            if (!path.Contains(neighbor)) {
+                FindAllPaths(neighbor, target, path, allPaths);
+            }
+        }
+    }
+
+    path.RemoveAt(path.Count - 1);
 }
 ```
