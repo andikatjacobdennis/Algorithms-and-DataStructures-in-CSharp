@@ -553,18 +553,137 @@ class Program {
 }
 ```
 
-### Linked Lists
+### LinkedList<T>
 
-A linked list is a linear data structure where each element is a separate object, and each element (node) contains a reference (link) to the next node in the sequence.
+`LinkedList<T>` is a generic collection that represents a doubly linked list, allowing for efficient insertion and removal of elements from any position in the list. Unlike arrays and `List<T>`, `LinkedList<T>` does not require contiguous memory allocation, making it more efficient for operations that involve frequent additions and deletions.
+
+#### Example Declaration
+
+You can declare a `LinkedList<T>` as follows:
 
 ```csharp
-public class Node {
-    public int Data;
-    public Node Next;
-}
+using System;
+using System.Collections.Generic;
 
-public class LinkedList {
-    public Node Head;
+LinkedList<int> numbers = new LinkedList<int>();
+```
+
+#### CRUD Operations on LinkedList<T>
+
+##### 1. Create
+
+To create new items in a `LinkedList<T>`, you can use the `AddLast()` or `AddFirst()` method. The `AddLast()` method appends an element to the end of the list, while the `AddFirst()` method inserts an element at the beginning.
+
+```csharp
+LinkedList<int> numbers = new LinkedList<int>();
+
+// Create (Add new elements)
+numbers.AddLast(1); // Adds 1 to the end of the list
+numbers.AddLast(2); // Adds 2 to the end of the list
+numbers.AddFirst(0); // Adds 0 to the beginning of the list
+```
+
+##### 2. Read
+
+To read data from a `LinkedList<T>`, you can use a `foreach` loop to iterate through the elements:
+
+```csharp
+// Read all numbers
+Console.WriteLine("All Numbers:");
+foreach (var number in numbers) {
+    Console.WriteLine(number); // Outputs: 0, 1, 2
+}
+```
+
+You can also access specific nodes using the `Find()` method:
+
+```csharp
+// Find a specific number
+var foundNode = numbers.Find(1);
+if (foundNode != null) {
+    Console.WriteLine($"Found: {foundNode.Value}"); // Outputs: Found: 1
+}
+```
+
+##### 3. Update
+
+To update an item, you must first find the node, and then you can change its value:
+
+```csharp
+// Update a specific element
+var nodeToUpdate = numbers.Find(1);
+if (nodeToUpdate != null) {
+    nodeToUpdate.Value = 10; // Changes 1 to 10
+}
+```
+
+##### 4. Delete
+
+To delete an item, you can use the `Remove()` method to remove a specific value or `RemoveFirst()`/`RemoveLast()` to remove the first or last element, respectively:
+
+```csharp
+// Delete by value
+numbers.Remove(10); // Removes 10 from the list
+
+// Delete the first and last elements
+numbers.RemoveFirst(); // Removes 0
+numbers.RemoveLast();  // Removes 2
+```
+
+#### Example of Full CRUD Operations
+
+Here’s a complete example demonstrating CRUD operations using `LinkedList<T>`:
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+class Program {
+    static void Main() {
+        // Create a LinkedList
+        LinkedList<int> numbers = new LinkedList<int>();
+
+        // Create: Adding new elements
+        numbers.AddLast(1);
+        numbers.AddLast(2);
+        numbers.AddFirst(0); // Adding to the front
+
+        // Read: Display all numbers
+        Console.WriteLine("All Numbers:");
+        foreach (var number in numbers) {
+            Console.WriteLine(number); // Outputs: 0, 1, 2
+        }
+
+        // Read: Find a specific number
+        var foundNode = numbers.Find(1);
+        if (foundNode != null) {
+            Console.WriteLine($"Found: {foundNode.Value}"); // Outputs: Found: 1
+        }
+
+        // Update: Changing a specific element
+        var nodeToUpdate = numbers.Find(1);
+        if (nodeToUpdate != null) {
+            nodeToUpdate.Value = 10; // Changes 1 to 10
+        }
+
+        Console.WriteLine("\nAfter Update:");
+        foreach (var number in numbers) {
+            Console.WriteLine(number); // Outputs: 0, 10, 2
+        }
+
+        // Delete: Removing a number by value
+        numbers.Remove(10); // Removes 10 from the list
+
+        // Delete the first and last elements
+        numbers.RemoveFirst(); // Removes 0
+        numbers.RemoveLast();  // Removes 2
+
+        // Final state of the LinkedList
+        Console.WriteLine("\nAfter Deletions:");
+        foreach (var number in numbers) {
+            Console.WriteLine(number); // Outputs: (no output, as the list is empty)
+        }
+    }
 }
 ```
 
