@@ -797,6 +797,122 @@ class Program {
 }
 ```
 
+### ConcurrentStack<T>
+
+`ConcurrentStack<T>` is a thread-safe collection that allows multiple threads to add and remove items concurrently without needing additional synchronization. It is ideal for scenarios where multiple threads may be accessing and modifying the stack simultaneously.
+
+#### Example Declaration
+
+You can declare a `ConcurrentStack<T>` as follows:
+
+```csharp
+using System;
+using System.Collections.Concurrent;
+
+ConcurrentStack<int> numbers = new ConcurrentStack<int>();
+```
+
+#### CRUD Operations on ConcurrentStack<T>
+
+##### 1. Create
+
+To create new items in a `ConcurrentStack<T>`, you can use the `Push()` method, which adds an element to the top of the stack.
+
+```csharp
+// Create (Add new elements)
+numbers.Push(1); // Adds 1 to the stack
+numbers.Push(2); // Adds 2 to the stack
+numbers.Push(3); // Adds 3 to the stack
+```
+
+##### 2. Read
+
+To read data from a `ConcurrentStack<T>`, you can use the `TryPeek()` method to safely view the top element without removing it, and the `Count` property to get the number of elements in the stack.
+
+```csharp
+// Read the top element
+if (numbers.TryPeek(out int topElement)) {
+    Console.WriteLine($"Top element: {topElement}"); // Outputs: 3
+}
+
+// Read the number of elements in the stack
+Console.WriteLine($"Number of elements in the stack: {numbers.Count}"); // Outputs: 3
+```
+
+##### 3. Update
+
+To update an item in a `ConcurrentStack<T>`, you typically have to remove the item, modify it, and then push it back onto the stack since stacks do not provide direct access to elements other than the top one. Here’s how you can do it:
+
+```csharp
+// Update: Changing the top element
+if (numbers.TryPop(out int poppedElement)) {
+    // poppedElement now holds the value of the top element (3)
+    poppedElement = 10; // Update the value
+    numbers.Push(poppedElement); // Push the updated value back onto the stack
+}
+```
+
+##### 4. Delete
+
+To delete an item, you can use the `TryPop()` method to remove the top element from the stack safely.
+
+```csharp
+// Delete the top element
+if (numbers.TryPop(out int removedElement)) {
+    Console.WriteLine($"Removed element: {removedElement}"); // Outputs: 10
+}
+
+// Check the number of elements after removal
+Console.WriteLine($"Number of elements after pop: {numbers.Count}"); // Outputs the remaining count
+```
+
+#### Example of Full CRUD Operations
+
+Here’s a complete example demonstrating CRUD operations using `ConcurrentStack<T>`:
+
+```csharp
+using System;
+using System.Collections.Concurrent;
+
+class Program {
+    static void Main() {
+        // Create a ConcurrentStack
+        ConcurrentStack<int> numbers = new ConcurrentStack<int>();
+
+        // Create: Adding new elements
+        numbers.Push(1);
+        numbers.Push(2);
+        numbers.Push(3);
+
+        // Read: Display the top element
+        if (numbers.TryPeek(out int topElement)) {
+            Console.WriteLine($"Top element: {topElement}"); // Outputs: 3
+        }
+
+        // Read: Count the number of elements
+        Console.WriteLine($"Number of elements in the stack: {numbers.Count}"); // Outputs: 3
+
+        // Update: Changing the top element
+        if (numbers.TryPop(out int poppedElement)) {
+            poppedElement = 10; // Update the value
+            numbers.Push(poppedElement); // Push the updated value back onto the stack
+        }
+
+        Console.WriteLine("\nAfter Update:");
+        if (numbers.TryPeek(out topElement)) {
+            Console.WriteLine($"Top element: {topElement}"); // Outputs: 10
+        }
+
+        // Delete: Removing the top element
+        if (numbers.TryPop(out int removedElement)) {
+            Console.WriteLine("\nAfter Deletion:");
+            Console.WriteLine($"Removed element: {removedElement}"); // Outputs: 10
+            Console.WriteLine($"Number of elements after pop: {numbers.Count}"); // Outputs the remaining count
+        }
+    }
+}
+```
+
 ### Queues
 
 A queue is a collection of elements that follows the First In First Out (FIFO) principle. Elements are added at the back and removed from the front.
