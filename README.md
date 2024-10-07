@@ -1,94 +1,273 @@
 ## Table of Contents
 
-### [1. Introduction](./1._Introduction.md)
-1.1 [**Overview of Algorithms and Data Structures**](./1.1_Overview_of_Algorithms_and_Data_Structures.md)  
-1.2 [**Importance in C# Programming**](./1.2_Importance_in_CSharp_Programming.md)  
+- [Introduction](#introduction)
+- [Data Structures](#data-structures)
+  - [Arrays](#arrays)
+  - [Linked Lists](#linked-lists)
+  - [Stacks](#stacks)
+  - [Queues](#queues)
+  - [Hash Tables](#hash-tables)
+  - [Trees](#trees)
+  - [Graphs](#graphs)
+- [Algorithms](#algorithms)
+  - [Sorting Algorithms](#sorting-algorithms)
+    - [Bubble Sort](#bubble-sort)
+    - [Merge Sort](#merge-sort)
+    - [Quick Sort](#quick-sort)
+  - [Searching Algorithms](#searching-algorithms)
+    - [Linear Search](#linear-search)
+    - [Binary Search](#binary-search)
+  - [Graph Algorithms](#graph-algorithms)
+    - [Depth-First Search (DFS)](#depth-first-search-dfs)
+    - [Breadth-First Search (BFS)](#breadth-first-search-bfs)
+- [Conclusion](#conclusion)
+- [References](#references)
 
-### [2. Getting Started](2._Getting_Started.md)
-2.1 [**Prerequisites**](./2.1_Prerequisites.md)  
-2.2 [**Setting Up the Environment**](./2.2_Setting_Up_the_Environment.md)  
+## Introduction
 
-### 3. Data Structures
-3.1 [**Arrays**](./3.1_Arrays.md)  
-3.2 [**Linked Lists**](./3.2_Linked_Lists.md)  
-3.3 [**Stacks and Queues**](./3.3_Stacks_and_Queues.md)  
-3.4 [**Hash Tables**](./3.4_Hash_Tables.md)  
-3.5 [**Heaps**](./3.5_Heaps.md)  
-3.6 [**Tries**](./3.6_Tries.md)  
-3.7 [**Segment Trees**](./3.7_Segment_Trees.md)  
-3.8 [**Disjoint Set (Union-Find)**](./3.8_Disjoint_Set_Union_Find.md)  
-3.9 [**Skip Lists**](./3.9_Skip_Lists.md)  
-3.10 [**Bloom Filters**](./3.10_Bloom_Filters.md)  
-3.11 [**Fenwick Tree (Binary Indexed Tree)**](./3.11_Fenwick_Tree_Binary_Indexed_Tree.md)  
+In this document, we will explore various data structures and algorithms that are essential for efficient programming in C#. Understanding these concepts will help you write better code, optimize performance, and solve complex problems effectively.
 
-### 4. Algorithms
-#### 4.1 Sorting Algorithms
-4.1.1 [**Bubble Sort**](./4.1_Bubble_Sort.md)  
-4.1.2 [**Selection Sort**](./4.2_Selection_Sort.md)  
-4.1.3 [**Insertion Sort**](./4.3_Insertion_Sort.md)  
-4.1.4 [**Quick Sort**](./4.4_Quick_Sort.md)  
-4.1.5 [**Merge Sort**](./4.5_Merge_Sort.md)  
-4.1.6 [**Heap Sort**](./4.6_Heap_Sort.md)  
-4.1.7 [**Counting Sort**](./4.7_Counting_Sort.md)  
-4.1.8 [**Radix Sort**](./4.8_Radix_Sort.md)  
+## Data Structures
 
-#### 4.2 Searching Algorithms
-4.2.1 [**Linear Search**](./5.1_Linear_Search.md)  
-4.2.2 [**Binary Search**](./5.2_Binary_Search.md)  
-4.2.3 [**Exponential Search**](./5.3_Exponential_Search.md)  
-4.2.4 [**Interpolation Search**](./5.4_Interpolation_Search.md)  
-4.2.5 [**Jump Search**](./5.5_Jump_Search.md)  
+### Arrays
 
-### [4.3 Graph Algorithms](4.3_Graph_Algorithms.md)
-4.3.1 [**Graph Representation**](./4.3.1_Graph_Representation.md)  
-   - 4.3.1.1 [**Adjacency Matrix**](./6.1.1_Adjacency_Matrix.md)  
-   - 4.3.1.2 [**Adjacency List**](./6.1.2_Adjacency_List.md)  
-   - 4.3.1.3 [**Edge List**](./6.1.3_Edge_List.md)  
-   - 4.3.1.4 [**Incidence Matrix**](./6.1.4_Incidence_Matrix.md)  
+Arrays are a collection of elements identified by index or key. They are used to store multiple values in a single variable.
 
-4.3.2 [**Graph Traversal Algorithms**](./6.2_Graph_Traversal_Algorithms.md)  
-   - 4.3.2.1 [**Depth-First Search (DFS)**](./6.2.1_Depth_First_Search.md)  
-   - 4.3.2.2 [**Breadth-First Search (BFS)**](./6.2.2_Breadth_First_Search.md)  
-   - 4.3.2.3 [**Iterative Deepening DFS**](./6.2.3_Iterative_Deepening_DFS.md)  
-   - 4.3.2.4 [**Bidirectional Search**](./6.2.4_Bidirectional_Search.md)  
+```csharp
+int[] numbers = { 1, 2, 3, 4, 5 };
+```
 
-4.3.3 [**Shortest Path Algorithms**](./6.3_Shortest_Path_Algorithms.md)  
-   - 4.3.3.1 [**Dijkstra's Algorithm**](./6.3.1_Dijkstras_Algorithm.md)  
-   - 4.3.3.2 [**Bellman-Ford Algorithm**](./6.3.2_Bellman_Ford_Algorithm.md)  
-   - 4.3.3.3 [**Floyd-Warshall Algorithm**](./6.3.3_Floyd_Warshall_Algorithm.md)  
-   - 4.3.3.4 [**A* Search Algorithm**](./6.3.4_A_Star_Search_Algorithm.md)  
-   - 4.3.3.5 [**Johnson's Algorithm**](./6.3.5_Johnsons_Algorithm.md)  
+### Linked Lists
 
-4.3.4 [**Minimum Spanning Tree Algorithms**](./6.4_Minimum_Spanning_Tree_Algorithms.md)  
-   - 4.3.4.1 [**Kruskal's Algorithm**](./6.4.1_Kruskals_Algorithm.md)  
-   - 4.3.4.2 [**Prim's Algorithm**](./6.4.2_Prims_Algorithm.md)  
-   - 4.3.4.3 [**Borůvka's Algorithm**](./6.4.3_Boruvkas_Algorithm.md)  
+A linked list is a linear data structure where each element is a separate object, and each element (node) contains a reference (link) to the next node in the sequence.
 
-4.3.5 [**Flow Networks**](./6.5_Flow_Networks.md)  
-   - 4.3.5.1 [**Ford-Fulkerson Method**](./6.5.1_Ford_Fulkerson_Method.md)  
-   - 4.3.5.2 [**Edmonds-Karp Algorithm**](./6.5.2_Edmonds_Karp_Algorithm.md)  
-   - 4.3.5.3 [**Dinic's Algorithm**](./6.5.3_Dinics_Algorithm.md)  
-   - 4.3.5.4 [**Push-Relabel Algorithm**](./6.5.4_Push_Relabel_Algorithm.md)  
-   - 4.3.5.5 [**Max Flow Min Cut Theorem**](./6.5.5_Max_Flow_Min_Cut_Theorem.md)  
+```csharp
+public class Node {
+    public int Data;
+    public Node Next;
+}
 
-4.3.6 [**Topological Sorting**](./6.6_Topological_Sorting.md)  
-   - 4.3.6.1 [**Kahn's Algorithm**](./6.6.1_Kahns_Algorithm.md)  
-   - 4.3.6.2 [**DFS-Based Topological Sort**](./6.6.2_DFS_Based_Topological_Sort.md)  
-   - 4.3.6.3 [**Applications of Topological Sort**](./6.6.3_Applications_of_Topological_Sort.md)  
+public class LinkedList {
+    public Node Head;
+}
+```
 
-4.3.7 [**Network Design Problems**](./6.7_Network_Design_Problems.md)  
-   - 4.3.7.1 [**Steiner Tree Problem**](./6.7.1_Steiner_Tree_Problem.md)  
-   - 4.3.7.2 [**Minimum Cost Network Flow**](./6.7.2_Minimum_Cost_Network_Flow.md)  
-   - 4.3.7.3 [**Multicast Routing**](./6.7.3_Multicast_Routing.md)  
+### Stacks
 
-#### 4.4 Algorithmic Techniques
-4.4.1 [**Dynamic Programming**](./7.1_Dynamic_Programming.md)  
-4.4.2 [**Greedy Algorithms**](./7.2_Greedy_Algorithms.md)  
-4.4.3 [**Backtracking**](./7.3_Backtracking.md)  
-4.4.4 [**Bit Manipulation**](./7.4_Bit_Manipulation.md)  
-4.4.5 [**String Algorithms**](./7.5_String_Algorithms.md)  
-4.4.6 [**Matrix Algorithms**](./7.6_Matrix_Algorithms.md)  
+A stack is a collection of elements that follows the Last In First Out (LIFO) principle. Elements can be added or removed from only one end.
 
-### 5. Complexity Analysis
-5.1 [**Time Complexity Analysis**](./8.1_Time_Complexity_Analysis.md)  
-5.2 [**Space Complexity Analysis**](./8.2_Space_Complexity_Analysis.md)  
+```csharp
+public class Stack {
+    private List<int> elements = new List<int>();
+
+    public void Push(int item) {
+        elements.Add(item);
+    }
+
+    public int Pop() {
+        int lastIndex = elements.Count - 1;
+        int lastItem = elements[lastIndex];
+        elements.RemoveAt(lastIndex);
+        return lastItem;
+    }
+}
+```
+
+### Queues
+
+A queue is a collection of elements that follows the First In First Out (FIFO) principle. Elements are added at the back and removed from the front.
+
+```csharp
+public class Queue {
+    private List<int> elements = new List<int>();
+
+    public void Enqueue(int item) {
+        elements.Add(item);
+    }
+
+    public int Dequeue() {
+        int firstItem = elements[0];
+        elements.RemoveAt(0);
+        return firstItem;
+    }
+}
+```
+
+### Hash Tables
+
+A hash table is a data structure that implements an associative array, a structure that can map keys to values.
+
+```csharp
+Dictionary<string, int> hashTable = new Dictionary<string, int>();
+hashTable["one"] = 1;
+hashTable["two"] = 2;
+```
+
+### Trees
+
+A tree is a hierarchical data structure consisting of nodes, with a single node as the root and other nodes as children.
+
+```csharp
+public class TreeNode {
+    public int Value;
+    public List<TreeNode> Children = new List<TreeNode>();
+}
+```
+
+### Graphs
+
+A graph is a collection of nodes (vertices) and edges connecting them. It can be directed or undirected.
+
+```csharp
+public class Graph {
+    private Dictionary<int, List<int>> adjacencyList = new Dictionary<int, List<int>>();
+
+    public void AddEdge(int source, int destination) {
+        if (!adjacencyList.ContainsKey(source)) {
+            adjacencyList[source] = new List<int>();
+        }
+        adjacencyList[source].Add(destination);
+    }
+}
+```
+
+## Algorithms
+
+### Sorting Algorithms
+
+#### Bubble Sort
+
+Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+
+```csharp
+public void BubbleSort(int[] arr) {
+    for (int i = 0; i < arr.Length - 1; i++) {
+        for (int j = 0; j < arr.Length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+```
+
+#### Merge Sort
+
+Merge sort is a divide-and-conquer algorithm that divides the array into halves, sorts them, and then merges them back together.
+
+```csharp
+public int[] MergeSort(int[] array) {
+    if (array.Length <= 1) return array;
+
+    int mid = array.Length / 2;
+    int[] left = MergeSort(array.Take(mid).ToArray());
+    int[] right = MergeSort(array.Skip(mid).ToArray());
+    
+    return Merge(left, right);
+}
+
+private int[] Merge(int[] left, int[] right) {
+    // Merging logic here
+}
+```
+
+#### Quick Sort
+
+Quick sort is an efficient sorting algorithm that uses a divide-and-conquer strategy to sort elements.
+
+```csharp
+public void QuickSort(int[] arr, int low, int high) {
+    if (low < high) {
+        int pi = Partition(arr, low, high);
+        QuickSort(arr, low, pi - 1);
+        QuickSort(arr, pi + 1, high);
+    }
+}
+
+private int Partition(int[] arr, int low, int high) {
+    // Partitioning logic here
+}
+```
+
+### Searching Algorithms
+
+#### Linear Search
+
+Linear search is a simple search algorithm that checks every element in the list until the desired element is found.
+
+```csharp
+public int LinearSearch(int[] arr, int target) {
+    for (int i = 0; i < arr.Length; i++) {
+        if (arr[i] == target) return i;
+    }
+    
+    return -1; // Not found
+}
+```
+
+#### Binary Search
+
+Binary search is a more efficient algorithm that works on sorted arrays by repeatedly dividing the search interval in half.
+
+```csharp
+public int BinarySearch(int[] arr, int target) {
+    int left = 0, right = arr.Length - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == target) return mid;
+
+        if (arr[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+
+    return -1; // Not found
+}
+```
+
+### Graph Algorithms
+
+#### Depth-First Search (DFS)
+
+DFS is an algorithm for traversing or searching tree or graph data structures. It starts at the root and explores as far as possible along each branch before backtracking.
+
+```csharp
+public void DFS(int vertex, HashSet<int> visited) {
+    visited.Add(vertex);
+    
+    foreach (var neighbor in adjacencyList[vertex]) {
+        if (!visited.Contains(neighbor)) {
+            DFS(neighbor, visited);
+        }
+    }
+}
+```
+
+#### Breadth-First Search (BFS)
+
+BFS is an algorithm for traversing or searching tree or graph data structures. It starts at the root and explores all neighbors at the present depth prior to moving on to nodes at the next depth level.
+
+```csharp
+public void BFS(int start) {
+    Queue<int> queue = new Queue<int>();
+    HashSet<int> visited = new HashSet<int>();
+
+    queue.Enqueue(start);
+    visited.Add(start);
+
+    while (queue.Count > 0) {
+        int vertex = queue.Dequeue();
+
+        foreach (var neighbor in adjacencyList[vertex]) {
+            if (!visited.Contains(neighbor)) {
+                visited.Add(neighbor);
+                queue.Enqueue(neighbor);
+            }
+        }
+    }
+}
+```
