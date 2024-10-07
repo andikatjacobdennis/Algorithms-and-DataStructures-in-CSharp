@@ -1382,7 +1382,7 @@ class Program {
 }
 ```
 
-## Trees
+### Trees
 
 A tree is a hierarchical data structure consisting of nodes, where each node contains a value and references to its child nodes. The topmost node is called the root, and each node can have zero or more child nodes. Trees are used in various applications, such as representing hierarchical data (e.g., file systems) and enabling efficient search operations.
 
@@ -1395,7 +1395,7 @@ public class TreeNode {
 
 ---
 
-### Binary Trees
+#### Binary Trees
 
 A binary tree is a specific type of tree where each node has at most two children, referred to as the left child and the right child. Binary trees are used in various algorithms and data structures, such as binary search trees and heaps.
 
@@ -1413,7 +1413,7 @@ public class BinaryTreeNode {
 }
 ```
 
-### Binary Search Trees (BST)
+#### Binary Search Trees (BST)
 
 A binary search tree is a binary tree with the additional property that for each node, all values in the left subtree are less than the node's value, and all values in the right subtree are greater. This property allows for efficient searching, insertion, and deletion operations.
 
@@ -1459,7 +1459,7 @@ public class BinarySearchTree {
 }
 ```
 
-### Heaps
+#### Heaps
 
 A heap is a special tree-based data structure that satisfies the heap property. In a max-heap, for any given node, the value of the node is greater than or equal to the values of its children, and in a min-heap, the value of the node is less than or equal to the values of its children. Heaps are commonly used in priority queues and sorting algorithms like heap sort.
 
@@ -1523,7 +1523,7 @@ public class MinHeap {
 }
 ```
 
-### Trie
+#### Trie
 
 A trie, or prefix tree, is a tree-like data structure used to store a dynamic set of strings, where the keys are usually strings. Tries are particularly useful for tasks involving retrieval of keys with a common prefix, such as autocomplete systems.
 
@@ -1582,7 +1582,7 @@ public class Trie {
 }
 ```
 
-### Graphs
+#### Graphs
 
 A graph is a collection of nodes (vertices) and edges connecting them. It can be directed or undirected.
 
