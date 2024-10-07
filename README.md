@@ -4,18 +4,18 @@ In this document, we will explore various data structures and algorithms that ar
 
 ## Data Structures
 
-## Arrays
+### Arrays
 
 Arrays are a collection of elements identified by index or key. They are used to store multiple values in a single variable. In C#, arrays are of fixed size and can hold elements of the same data type.
 
-### Example Declaration
+#### Example Declaration
 ```csharp
 int[] numbers = { 1, 2, 3, 4, 5 };
 ```
 
-### CRUD Operations on Arrays
+#### CRUD Operations on Arrays
 
-#### 1. Create
+##### 1. Create
 
 To create or initialize an array in C#, you can use the following syntax:
 
@@ -29,7 +29,7 @@ You can also initialize an array with values:
 int[] numbers = { 1, 2, 3, 4, 5 }; // Initializes with values
 ```
 
-#### 2. Read
+##### 2. Read
 
 To read or access elements in an array, you use the index of the element. In C#, array indices are zero-based.
 
@@ -46,7 +46,7 @@ for (int i = 0; i < numbers.Length; i++) {
 }
 ```
 
-#### 3. Update
+##### 3. Update
 
 To update an element in an array, you simply assign a new value to the desired index:
 
@@ -64,7 +64,7 @@ for (int i = 0; i < numbers.Length; i++) {
 }
 ```
 
-#### 4. Delete
+##### 4. Delete
 
 Since arrays in C# have a fixed size, you cannot directly delete an element. However, you can achieve the effect of deletion by shifting elements and reducing the size of the logical array:
 
@@ -78,7 +78,7 @@ for (int i = indexToDelete; i < numbers.Length - 1; i++) {
 numbers[numbers.Length - 1] = 0; // Assuming you want to set it to 0
 ```
 
-### Example of Full CRUD Operations
+#### Example of Full CRUD Operations
 
 Here is a complete example demonstrating CRUD operations on an array:
 
@@ -117,7 +117,7 @@ class Program {
 }
 ```
 
-### Output
+#### Output
 When you run the above code, the output will be:
 
 ```
