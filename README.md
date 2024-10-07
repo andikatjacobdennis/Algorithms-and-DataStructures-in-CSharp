@@ -1692,6 +1692,186 @@ public class BinarySearchTree {
 }
 ```
 
+### B-Trees
+
+A **B-Tree** is a self-balancing tree data structure that maintains sorted data and allows searches, sequential access, insertions, and deletions in logarithmic time. B-Trees are commonly used in databases and file systems to manage large amounts of data efficiently. They are designed to work well on disk storage systems, minimizing the number of disk reads required.
+
+**Use Cases:** 
+- Implementing database indexes.
+- Storing and retrieving large datasets efficiently.
+- Maintaining sorted data in external storage systems.
+
+### Implementation
+
+Here's a basic implementation of a B-Tree node class and the B-Tree structure itself:
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+public class BTreeNode
+{
+    public int[] Keys;                  // Array of keys
+    public BTreeNode[] Children;        // Array of child nodes
+    public int Degree;                  // Minimum degree (defines the range for number of keys)
+    public int NumberOfKeys;            // Current number of keys in the node
+    public bool IsLeaf;                 // True if the node is a leaf node
+
+    // Constructor
+    public BTreeNode(int degree, bool isLeaf)
+    {
+        Degree = degree;
+        IsLeaf = isLeaf;
+        Keys = new int[2 * degree - 1]; // Maximum keys in a node
+        Children = new BTreeNode[2 * degree]; // Maximum children in a node
+        NumberOfKeys = 0;
+    }
+}
+
+public class BTree
+{
+    private BTreeNode Root;             // Root node of the B-Tree
+    private int Degree;                  // Minimum degree
+
+    // Constructor
+    public BTree(int degree)
+    {
+        Root = null;
+        Degree = degree;
+    }
+
+    // Method to insert a key in the B-Tree
+    public void Insert(int key)
+    {
+        if (Root == null)
+        {
+            // Create a new root if the tree is empty
+            Root = new BTreeNode(Degree, true);
+            Root.Keys[0] = key;
+            Root.NumberOfKeys = 1;
+        }
+        else
+        {
+            // If the root is full, then the tree grows in height
+            if (Root.NumberOfKeys == 2 * Degree - 1)
+            {
+                var newRoot = new BTreeNode(Degree, false);
+                newRoot.Children[0] = Root; // Old root becomes a child of new root
+                SplitChild(newRoot, 0);      // Split the old root
+                int i = 0;
+                if (newRoot.Keys[0] < key)
+                    i++;
+                newRoot.Children[i].InsertNonFull(key);
+                Root = newRoot;              // Update the root
+            }
+            else
+            {
+                Root.InsertNonFull(key);      // Insert the key in the non-full root
+            }
+        }
+    }
+
+    // Method to split the child of a node
+    private void SplitChild(BTreeNode parent, int index)
+    {
+        var newChild = new BTreeNode(Degree, parent.Children[index].IsLeaf);
+        var oldChild = parent.Children[index];
+
+        newChild.NumberOfKeys = Degree - 1; // New child will have Degree - 1 keys
+
+        // Move keys from old child to new child
+        for (int j = 0; j < Degree - 1; j++)
+            newChild.Keys[j] = oldChild.Keys[j + Degree];
+
+        // Move children from old child to new child if it is not a leaf
+        if (!oldChild.IsLeaf)
+        {
+            for (int j = 0; j < Degree; j++)
+                newChild.Children[j] = oldChild.Children[j + Degree];
+        }
+
+        oldChild.NumberOfKeys = Degree - 1; // Reduce the number of keys in old child
+
+        // Move children of parent to make room for new child
+        for (int j = parent.NumberOfKeys; j >= index + 1; j--)
+            parent.Children[j + 1] = parent.Children[j];
+
+        // Link the new child to the parent
+        parent.Children[index + 1] = newChild;
+
+        // Move a key from the old child to the parent
+        for (int j = parent.NumberOfKeys - 1; j >= index; j--)
+            parent.Keys[j + 1] = parent.Keys[j];
+
+        parent.Keys[index] = oldChild.Keys[Degree - 1];
+        parent.NumberOfKeys++;
+    }
+
+    // Method to insert a key in a non-full node
+    public void InsertNonFull(this BTreeNode node, int key)
+    {
+        int i = node.NumberOfKeys - 1;
+
+        if (node.IsLeaf)
+        {
+            // Find the location where the new key should be inserted
+            while (i >= 0 && node.Keys[i] > key)
+            {
+                node.Keys[i + 1] = node.Keys[i]; // Move keys to make space
+                i--;
+            }
+            node.Keys[i + 1] = key; // Insert the new key
+            node.NumberOfKeys++;
+        }
+        else
+        {
+            // Find the child that will have the new key
+            while (i >= 0 && node.Keys[i] > key)
+                i--;
+
+            // Check if the found child is full
+            if (node.Children[i + 1].NumberOfKeys == 2 * Degree - 1)
+            {
+                SplitChild(node, i + 1);
+                if (node.Keys[i + 1] < key)
+                    i++;
+            }
+            node.Children[i + 1].InsertNonFull(key); // Insert the key in the appropriate child
+        }
+    }
+}
+
+// Example usage
+class Program
+{
+    static void Main()
+    {
+        BTree bTree = new BTree(3); // Create a B-Tree with degree 3
+
+        // Insert keys into the B-Tree
+        bTree.Insert(10);
+        bTree.Insert(20);
+        bTree.Insert(5);
+        bTree.Insert(6);
+        bTree.Insert(12);
+        bTree.Insert(30);
+        bTree.Insert(7);
+        bTree.Insert(17);
+
+        // Display the B-Tree structure (not implemented)
+        // You can implement a method to visualize or traverse the B-Tree
+    }
+}
+```
+
+### Explanation:
+1. **BTreeNode Class**: This class defines a node in the B-Tree, containing an array of keys, an array of child nodes, the degree of the tree, the number of keys in the node, and a flag indicating if the node is a leaf.
+2. **BTree Class**: This class manages the overall B-Tree structure and contains methods for inserting keys and splitting child nodes.
+3. **Insert Method**: The method handles inserting a key into the B-Tree. It checks if the root is null or if it's full, and it appropriately splits the root if needed.
+4. **SplitChild Method**: This method splits a full child node into two nodes and adjusts the parent node.
+5. **InsertNonFull Method**: This method inserts a key into a non-full node by finding the appropriate location and moving keys as necessary.
+6. **Example Usage**: The `Main` method demonstrates how to create a B-Tree and insert keys. The method to display the structure of the B-Tree is left for implementation.
+
 #### Heaps
 
 A heap is a special tree-based data structure that satisfies the heap property. In a max-heap, for any given node, the value of the node is greater than or equal to the values of its children, and in a min-heap, the value of the node is less than or equal to the values of its children. Heaps are commonly used in priority queues and sorting algorithms like heap sort.
