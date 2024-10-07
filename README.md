@@ -425,6 +425,134 @@ class Program {
 }
 ```
 
+### List<T>
+
+`List<T>` is a generic collection that allows you to store a list of items of a specific type. It provides methods to manipulate the data, including adding, removing, and searching for elements. The `List<T>` is particularly useful when you need a collection that can grow and shrink in size dynamically.
+
+#### Example Declaration
+
+You can declare a `List<T>` as follows:
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+```
+
+#### CRUD Operations on List<T>
+
+##### 1. Create
+
+To create new items in a `List<T>`, you can use the `Add()` method. This method appends an element to the end of the list.
+
+```csharp
+List<int> numbers = new List<int> { 1, 2, 3 };
+
+// Create (Add new elements)
+numbers.Add(4); // Adds 4 to the list
+numbers.Add(5); // Adds 5 to the list
+```
+
+##### 2. Read
+
+To read data from a `List<T>`, you can use various methods such as `Count`, indexing, and `ForEach()`:
+
+```csharp
+// Read all numbers
+foreach (var number in numbers) {
+    Console.WriteLine(number); // Outputs: 1, 2, 3, 4, 5
+}
+
+// Read a specific element using an index
+int firstNumber = numbers[0]; // Gets the first element (1)
+```
+
+You can also use LINQ queries to filter the list:
+
+```csharp
+using System.Linq;
+
+// Read even numbers using LINQ
+var evenNumbers = numbers.Where(n => n % 2 == 0).ToList();
+Console.WriteLine("Even Numbers:");
+foreach (var number in evenNumbers) {
+    Console.WriteLine(number); // Outputs: 2, 4
+}
+```
+
+##### 3. Update
+
+To update an item, you can access it via its index and assign a new value:
+
+```csharp
+// Update the second element (index 1)
+numbers[1] = 10; // Changes 2 to 10
+```
+
+##### 4. Delete
+
+To delete an item, you can use the `Remove()` or `RemoveAt()` method. The `Remove()` method removes the first occurrence of a specific value, while `RemoveAt()` removes an element at a specified index:
+
+```csharp
+// Delete by value
+numbers.Remove(10); // Removes 10 from the list
+
+// Delete by index
+numbers.RemoveAt(0); // Removes the first element (1)
+```
+
+#### Example of Full CRUD Operations
+
+Here’s a complete example demonstrating CRUD operations using `List<T>`:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program {
+    static void Main() {
+        // Create a List
+        List<int> numbers = new List<int> { 1, 2, 3 };
+
+        // Create: Adding new elements
+        numbers.Add(4);
+        numbers.Add(5);
+
+        // Read: Display all numbers
+        Console.WriteLine("All Numbers:");
+        foreach (var number in numbers) {
+            Console.WriteLine(number); // Outputs: 1, 2, 3, 4, 5
+        }
+
+        // Read: Using LINQ to find even numbers
+        var evenNumbers = numbers.Where(n => n % 2 == 0).ToList();
+        Console.WriteLine("\nEven Numbers:");
+        foreach (var number in evenNumbers) {
+            Console.WriteLine(number); // Outputs: 2, 4
+        }
+
+        // Update: Changing the second element
+        numbers[1] = 10; // Changes 2 to 10
+        Console.WriteLine("\nAfter Update:");
+        foreach (var number in numbers) {
+            Console.WriteLine(number); // Outputs: 1, 10, 3, 4, 5
+        }
+
+        // Delete: Removing a number by value and index
+        numbers.Remove(10); // Removes 10 from the list
+        numbers.RemoveAt(0); // Removes the first element (1)
+
+        // Final state of the List
+        Console.WriteLine("\nAfter Deletions:");
+        foreach (var number in numbers) {
+            Console.WriteLine(number); // Outputs: 3, 4, 5
+        }
+    }
+}
+```
+
 ### Linked Lists
 
 A linked list is a linear data structure where each element is a separate object, and each element (node) contains a reference (link) to the next node in the sequence.
