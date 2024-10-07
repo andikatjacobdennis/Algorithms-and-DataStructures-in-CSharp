@@ -138,239 +138,312 @@
 
 In this document, we will explore various data structures and algorithms that are essential for efficient programming in C#. Understanding these concepts will help you write better code, optimize performance, and solve complex problems effectively.
 
-## Time and space complexity
+Sure! Here's a consolidated view of both time and space complexity with examples and mathematical calculations for each category.
 
-Time and space complexity are fundamental concepts in computer science and algorithm analysis. They help in evaluating the efficiency of an algorithm regarding the resources it consumes. Let’s break them down along with Big-O notation.
+### Time and Space Complexity
 
-### Time Complexity
+#### 1. **O(1) - Constant Time / Space**
 
-**Definition**: Time complexity measures the amount of time an algorithm takes to complete as a function of the size of the input data. It helps in estimating how the runtime of an algorithm grows as the size of the input increases.
-
-**Common Time Complexities**:
-1. **O(1)**: Constant time – the execution time does not depend on the input size.
-   - Example: Accessing an element in an array by index.
-   
-2. **O(n)**: Linear time – the execution time grows linearly with the input size.
-   - Example: A loop that iterates through an array of size \(n\).
-   
-3. **O(log n)**: Logarithmic time – the execution time grows logarithmically as the input size increases. Commonly seen in algorithms that divide the problem space in half (e.g., binary search).
-   
-4. **O(n^2)**: Quadratic time – the execution time grows quadratically with the input size. Typically found in algorithms with nested loops.
-   - Example: Bubble sort or selection sort.
-   
-5. **O(n!)**: Factorial time – the execution time grows factorially with the input size, usually in recursive algorithms that generate all permutations of the input.
-
-### Space Complexity
-
-**Definition**: Space complexity measures the amount of memory an algorithm uses as a function of the input size. It includes both the space required for the input and the auxiliary space (temporary space used during execution).
-
-**Common Space Complexities**:
-1. **O(1)**: Constant space – the algorithm uses a fixed amount of space regardless of the input size.
-   - Example: Using a few variables to store data.
-   
-2. **O(n)**: Linear space – the algorithm uses space proportional to the input size.
-   - Example: Creating a copy of an input array or a list.
-   
-3. **O(n^2)**: Quadratic space – this occurs when the algorithm requires a two-dimensional data structure based on the input size, such as in dynamic programming problems.
-
-### Big-O Notation
-
-**Definition**: Big-O notation is a mathematical notation used to describe the upper bound of the time complexity or space complexity of an algorithm. It provides an asymptotic analysis of the algorithm's performance, focusing on the behavior of the function as the input size grows towards infinity.
-
-**Key Points**:
-- **Focus on the Worst Case**: Big-O describes the worst-case scenario, giving an upper limit on the time or space complexity.
-- **Ignoring Constants and Lower Order Terms**: When expressing an algorithm's complexity, we ignore constant factors and lower-order terms, as they become insignificant for large input sizes.
-- **Example**: If an algorithm has a time complexity of \(3n^2 + 2n + 5\), in Big-O notation, we represent it as:
-
-  ```math
-  O(n^2)
+- **Time Complexity Example:**
+  ```csharp
+  int GetFirstElement(int[] arr)
+  {
+      return arr[0]; // Accessing the first element
+  }
   ```
 
-#### 1. **Array - O(1)**
+  **Time Complexity Calculation:**
+  - The operation is performed in a fixed amount of time regardless of the size of the input array. 
+  - Thus, time complexity is `O(1)`.
 
-**Description**: Access an element in an array using its index.
-
-```csharp
-public class ArrayExample
-{
-    public int GetFirstElement(int[] array)
-    {
-        return array[0]; // Get the first element (constant time)
-    }
-}
-
-**Explanation**: 
-- **Time Complexity Calculation**:
-  - The operation to access any index in an array takes a constant amount of time because it involves simple pointer arithmetic.
-  - Formula to calculate the address of the element:
-  ```math
-  address = base\_address + index \times size\_of\_element
-  ```
-  - Therefore, regardless of the size of the array, accessing an element takes \(O(1)\) time.
-
-#### 2. **Linear Search - O(n)**
-
-**Description**: Search for a number in an array by checking each element one by one.
-
-```csharp
-public class LinearSearchExample
-{
-    public int FindNumber(int[] array, int target)
-    {
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (array[i] == target)
-                return i; // Return the index if found
-        }
-        return -1; // Return -1 if not found
-    }
-}
-```
-
-**Explanation**: 
-- **Time Complexity Calculation**:
-  - In the worst-case scenario, you may need to check every element in the array. 
-  - If the array contains \(n\) elements, the maximum number of checks will be \(n\).
-  - Therefore, the time complexity is:
-  ```math
-  O(n)
+- **Space Complexity Example:**
+  ```csharp
+  void PrintFirstElement(int[] arr)
+  {
+      Console.WriteLine(arr[0]); // Constant space usage
+  }
   ```
 
-#### 3. **Binary Search - O(log n)**
+  **Space Complexity Calculation:**
+  - Only a constant amount of space is used for the output, irrespective of the input size.
+  - Thus, space complexity is `O(1)`.
 
-**Description**: Search for a number in a sorted array by dividing the array in half each time.
+#### 2. **O(log n) - Logarithmic Time / Space**
 
-```csharp
-public class BinarySearchExample
-{
-    public int BinarySearch(int[] array, int target)
-    {
-        int left = 0;
-        int right = array.Length - 1;
-
-        while (left <= right)
-        {
-            int mid = left + (right - left) / 2;
-
-            if (array[mid] == target)
-                return mid; // Found the target
-            else if (array[mid] < target)
-                left = mid + 1; // Search in the right half
-            else
-                right = mid - 1; // Search in the left half
-        }
-        return -1; // Target not found
-    }
-}
-```
-
-**Explanation**: 
-- **Time Complexity Calculation**:
-  - Each iteration of the loop halves the size of the search space.
-  - The number of iterations needed to reduce \(n\) elements to 1 can be expressed as:
-  ```math
-  n / 2^k = 1 \implies k = \log_2(n)
-  ```
-  - Thus, the time complexity is:
-  ```math
-  O(log n)
+- **Time Complexity Example:**
+  ```csharp
+  int BinarySearch(int[] arr, int target)
+  {
+      int left = 0, right = arr.Length - 1;
+      while (left <= right)
+      {
+          int mid = left + (right - left) / 2;
+          if (arr[mid] == target) return mid;
+          else if (arr[mid] < target) left = mid = 1;
+          else right = mid - 1;
+      }
+      return -1; // Not found
+  }
   ```
 
-#### 4. **Bubble Sort - O(n²)**
-
-**Description**: A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
-
-```csharp
-public class BubbleSortExample
-{
-    public void BubbleSort(int[] array)
-    {
-        int n = array.Length;
-        for (int i = 0; i < n - 1; i++)
-        {
-            for (int j = 0; j < n - i - 1; j++)
-            {
-                if (array[j] > array[j + 1])
-                {
-                    // Swap
-                    int temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp; // Sorting the array
-                }
-            }
-        }
-    }
-}
-```
-
-**Explanation**: 
-- **Time Complexity Calculation**:
-  - The outer loop runs \(n-1\) times. 
-  - The inner loop compares adjacent elements, which can run up to \(n-i-1\) times.
-  - The total number of comparisons can be approximated as:
-  ```math
-  \sum_{i=0}^{n-1} (n-i-1) \approx \frac{(n-1)n}{2} \approx O(n^2)
-  ```
-  - Therefore, the time complexity is:
-  ```math
-  O(n^2)
-  ```
-
-#### 5. **Stack - O(1)**
-
-**Description**: A stack is a collection where you can only add or remove items from one end (the top).
-
-```csharp
-using System.Collections.Generic;
-
-public class StackExample
-{
-    private Stack<int> stack = new Stack<int>();
-
-    public void Push(int value)
-    {
-        stack.Push(value); // Add an item to the top of the stack
-    }
-
-    public int Pop()
-    {
-        return stack.Pop(); // Remove and return the top item
-    }
-}
-```
-
-**Explanation**: 
-- **Time Complexity Calculation**:
-  - Both `Push` and `Pop` operations are performed at the top of the stack and do not require iterating through elements.
-  - Each operation is executed in constant time, leading to:
-  ```math
-  O(1)
-  ```
-
-#### 6. **Factorial Calculation - O(n!)**
-
-**Description**: A method to calculate the factorial of a number using recursion.
-
-```csharp
-public class FactorialExample
-{
-    public int Factorial(int n)
-    {
-        if (n <= 1)
-            return 1; // Base case
-        return n * Factorial(n - 1); // Recursive call
-    }
-}
-```
-
-**Explanation**: 
-- **Time Complexity Calculation**:
-  - Each call to the `Factorial` method generates another call until it reaches 1. This creates a tree-like structure with multiple branches.
-  - For \(n\), the function makes \(n\) calls, each branching out as it goes deeper, leading to:
-  ```math
-  O(n!)
-  ```
+  **Time Complexity Calculation:**
+  - Each iteration halves the search space until the target is found or the search space is exhausted.
+  - The number of iterations can be approximated as:
   
+  ```math
+  T(n) = \log_2(n)
+  ```
+  - Thus, time complexity is `O(log n)`.
+
+- **Space Complexity Example:**
+  ```csharp
+  int LogExample(int n)
+  {
+      if (n <= 1) return 1;
+      return LogExample(n / 2) + 1; // Recursive call
+  }
+  ```
+
+  **Space Complexity Calculation:**
+  - The recursion stack grows with each call, and the depth of recursion is approximately `log n`.
+  - Thus, space complexity is `O(log n)`.
+
+#### 3. **O(n) - Linear Time / Space**
+
+- **Time Complexity Example:**
+  ```csharp
+  int LinearSearch(int[] arr, int target)
+  {
+      for (int i = 0; i < arr.Length; i++)
+      {
+          if (arr[i] == target) return i;
+      }
+      return -1; // Not found
+  }
+  ```
+
+  **Time Complexity Calculation:**
+  - In the worst case, each element is checked until the target is found, leading to:
+  
+  ```math
+  T(n) = n
+  ```
+  - Thus, time complexity is `O(n)`.
+
+- **Space Complexity Example:**
+  ```csharp
+  int[] CreateArray(int n)
+  {
+      int[] arr = new int[n]; // Allocate space for n elements
+      return arr;
+  }
+  ```
+
+  **Space Complexity Calculation:**
+  - An array of size `n` is created, leading to:
+  
+  ```math
+  S(n) = n
+  ```
+  - Thus, space complexity is `O(n)`.
+
+#### 4. **O(n log n) - Linearithmic Time / Space**
+
+- **Time Complexity Example:**
+  ```csharp
+  void MergeSort(int[] arr)
+  {
+      if (arr.Length <= 1) return;
+
+      int mid = arr.Length / 2;
+      int[] left = new int[mid];
+      int[] right = new int[arr.Length - mid];
+
+      Array.Copy(arr, left, mid);
+      Array.Copy(arr, mid, right, 0, arr.Length - mid);
+
+      MergeSort(left);
+      MergeSort(right);
+      Merge(arr, left, right);
+  }
+  ```
+
+  **Time Complexity Calculation:**
+  - The merging step takes `O(n)` and the number of levels in the recursion tree is `log n`:
+  
+  ```math
+  T(n) = n \log_2(n)
+  ```
+  - Thus, time complexity is `O(n log n)`.
+
+- **Space Complexity Example:**
+  ```csharp
+  void Merge(int[] arr, int[] left, int[] right)
+  {
+      int i = 0, j = 0, k = 0;
+      while (i < left.Length && j < right.Length)
+      {
+          if (left[i] <= right[j]) arr[k++] = left[i++];
+          else arr[k++] = right[j++];
+      }
+      while (i < left.Length) arr[k++] = left[i++];
+      while (j < right.Length) arr[k++] = right[j++];
+  }
+  ```
+
+  **Space Complexity Calculation:**
+  - The left and right subarrays require additional space of `O(n)`. Thus, space complexity remains `O(n)`.
+
+#### 5. **O(n²) - Quadratic Time / Space**
+
+- **Time Complexity Example:**
+  ```csharp
+  void BubbleSort(int[] arr)
+  {
+      for (int i = 0; i < arr.Length - 1; i++)
+      {
+          for (int j = 0; j < arr.Length - i - 1; j++)
+          {
+              if (arr[j] > arr[j + 1])
+              {
+                  // Swap
+                  int temp = arr[j];
+                  arr[j] = arr[j + 1];
+                  arr[j + 1] = temp;
+              }
+          }
+      }
+  }
+  ```
+
+  **Time Complexity Calculation:**
+  - The outer loop runs `n` times, and for each iteration, the inner loop runs `n-i-1` times:
+  
+  ```math
+  T(n) = \sum_{i=0}^{n-1} (n - i - 1) = \frac{n(n-1)}{2}
+  ```
+  - Thus, time complexity is `O(n²)`.
+
+- **Space Complexity Example:**
+  ```csharp
+  void MatrixMultiplication(int[,] A, int[,] B, int[,] C, int n)
+  {
+      for (int i = 0; i < n; i++)
+      {
+          for (int j = 0; j < n; j++)
+          {
+              C[i, j] = 0;
+              for (int k = 0; k < n; k++)
+              {
+                  C[i, j] += A[i, k] * B[k, j];
+              }
+          }
+      }
+  }
+  ```
+
+  **Space Complexity Calculation:**
+  - The matrix multiplication algorithm uses `O(1)` additional space apart from the input matrices.
+  - Thus, space complexity is `O(1)`.
+
+#### 6. **O(2^n) - Exponential Time / Space**
+
+- **Time Complexity Example:**
+  ```csharp
+  int Fibonacci(int n)
+  {
+      if (n <= 1) return n;
+      return Fibonacci(n - 1) + Fibonacci(n - 2); // Recursive calls
+  }
+  ```
+
+  **Time Complexity Calculation:**
+  - The number of calls doubles with each increase in `n`, leading to:
+  
+  ```math
+  T(n) = 2^n
+  ```
+  - Thus, time complexity is `O(2^n)`.
+
+- **Space Complexity Example:**
+  ```csharp
+  int FibonacciWithStack(int n)
+  {
+      if (n <= 1) return n;
+      return FibonacciWithStack(n - 1) + FibonacciWithStack(n - 2);
+  }
+  ```
+
+  **Space Complexity Calculation:**
+  - The maximum depth of the recursion stack can go up to `n`, leading to:
+  
+  ```math
+  S(n) = n
+  ```
+  - Thus, space complexity is `O(n)`.
+
+#### 7. **O(n!) - Factorial Time / Space**
+
+- **Time Complexity Example:**
+  ```csharp
+  void Permute(int[] arr, int l, int r)
+  {
+      if (l == r)
+      {
+          Console.WriteLine(string.Join(", ", arr)); // Print permutation
+      }
+      else
+      {
+          for (int i = l; i <= r; i++)
+          {
+              Swap(ref arr[l], ref arr[i]);
+              Permute(arr, l + 1, r);
+              Swap(ref arr[l], ref arr[i]); // Backtrack
+          }
+      }
+  }
+
+  void Swap(ref int a, ref int b)
+  {
+      int temp = a;
+      a = b;
+      b = temp;
+  }
+  ```
+
+  **Time Complexity Calculation:**
+  - The number of permutations of `n` elements is `n!`, leading to:
+  
+  ```math
+  T(n) = n!
+  ```
+  - Thus, time complexity is `O(n!)`.
+
+- **Space Complexity Example:**
+  - The space complexity for storing all permutations is significant, but if we consider the recursion stack, it can reach `n` levels deep.
+
+  **Space Complexity Calculation:**
+  - The space used by the recursion stack is:
+  
+  ```math
+  S(n) = n
+  ```
+  - Thus, space complexity is `O(n)`.
+
+### Summary of Time and Space Complexities
+
+| Notation   | Name                  | Time Complexity                  | Space Complexity
+
+                |
+|------------|-----------------------|----------------------------------|---------------------------------|
+| O(1)       | Constant              | Fixed time                       | Constant                        |
+| O(log n)   | Logarithmic           | Decreases exponentially          | Logarithmic                    |
+| O(n)       | Linear                | Linear                           | Linear                          |
+| O(n log n) | Linearithmic          | Linearithmic                    | Linear (or Linearithmic in some cases) |
+| O(n²)      | Quadratic             | Quadratic                       | Constant                        |
+| O(2^n)     | Exponential           | Exponential                     | Linear                          |
+| O(n!)      | Factorial             | Factorial                       | Linear                          |
+
 ## Data Structures
 
 ### Arrays
