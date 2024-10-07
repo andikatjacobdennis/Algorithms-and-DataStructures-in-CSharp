@@ -687,23 +687,112 @@ class Program {
 }
 ```
 
-### Stacks
+### Stack<T>
 
-A stack is a collection of elements that follows the Last In First Out (LIFO) principle. Elements can be added or removed from only one end.
+`Stack<T>` is a generic collection that allows you to store objects in a last-in, first-out order. This means that the last element added to the stack is the first one to be removed. It is ideal for scenarios where you need to keep track of a sequence of actions or states.
+
+#### Example Declaration
+
+You can declare a `Stack<T>` as follows:
 
 ```csharp
-public class Stack {
-    private List<int> elements = new List<int>();
+using System;
+using System.Collections.Generic;
 
-    public void Push(int item) {
-        elements.Add(item);
-    }
+Stack<int> numbers = new Stack<int>();
+```
 
-    public int Pop() {
-        int lastIndex = elements.Count - 1;
-        int lastItem = elements[lastIndex];
-        elements.RemoveAt(lastIndex);
-        return lastItem;
+#### CRUD Operations on Stack<T>
+
+##### 1. Create
+
+To create new items in a `Stack<T>`, you can use the `Push()` method, which adds an element to the top of the stack.
+
+```csharp
+// Create (Add new elements)
+numbers.Push(1); // Adds 1 to the stack
+numbers.Push(2); // Adds 2 to the stack
+numbers.Push(3); // Adds 3 to the stack
+```
+
+##### 2. Read
+
+To read data from a `Stack<T>`, you can use the `Peek()` method to view the top element without removing it, and the `Count` property to get the number of elements in the stack.
+
+```csharp
+// Read the top element
+int topElement = numbers.Peek(); // Gets the top element (3)
+
+// Read the number of elements in the stack
+Console.WriteLine($"Number of elements in the stack: {numbers.Count}"); // Outputs: 3
+```
+
+##### 3. Update
+
+To update an item in a `Stack<T>`, you typically have to remove the item, modify it, and then push it back onto the stack since stacks do not provide direct access to elements other than the top one. Here's how you can do it:
+
+```csharp
+// Update: Changing the top element
+if (numbers.Count > 0) {
+    int topElement = numbers.Pop(); // Remove the top element (3)
+    topElement = 10; // Update the value
+    numbers.Push(topElement); // Push the updated value back onto the stack
+}
+```
+
+##### 4. Delete
+
+To delete an item, you can use the `Pop()` method to remove the top element from the stack:
+
+```csharp
+// Delete the top element
+int removedElement = numbers.Pop(); // Removes the top element (10)
+
+// Check the number of elements after removal
+Console.WriteLine($"Number of elements after pop: {numbers.Count}"); // Outputs: 2
+```
+
+#### Example of Full CRUD Operations
+
+Here’s a complete example demonstrating CRUD operations using `Stack<T>`:
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+class Program {
+    static void Main() {
+        // Create a Stack
+        Stack<int> numbers = new Stack<int>();
+
+        // Create: Adding new elements
+        numbers.Push(1);
+        numbers.Push(2);
+        numbers.Push(3);
+
+        // Read: Display the top element
+        int topElement = numbers.Peek();
+        Console.WriteLine($"Top element: {topElement}"); // Outputs: 3
+
+        // Read: Count the number of elements
+        Console.WriteLine($"Number of elements in the stack: {numbers.Count}"); // Outputs: 3
+
+        // Update: Changing the top element
+        if (numbers.Count > 0) {
+            topElement = numbers.Pop(); // Removes the top element (3)
+            topElement = 10; // Update the value
+            numbers.Push(topElement); // Push the updated value back onto the stack
+        }
+
+        Console.WriteLine("\nAfter Update:");
+        Console.WriteLine($"Top element: {numbers.Peek()}"); // Outputs: 10
+
+        // Delete: Removing the top element
+        int removedElement = numbers.Pop(); // Removes the top element (10)
+
+        Console.WriteLine("\nAfter Deletion:");
+        Console.WriteLine($"Removed element: {removedElement}"); // Outputs: 10
+        Console.WriteLine($"Number of elements after pop: {numbers.Count}"); // Outputs: 2
     }
 }
 ```
