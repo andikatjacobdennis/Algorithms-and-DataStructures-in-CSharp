@@ -279,6 +279,154 @@ Collection after deletion:
 5
 ```
 
+Here's an explanation of how to perform CRUD (Create, Read, Update, Delete) operations using `IQueryable<T>` in C#. The `IQueryable<T>` interface is an extension of `IEnumerable<T>` and is used primarily for querying data from a data source, especially in the context of LINQ (Language Integrated Query) and Entity Framework.
+
+---
+
+### IQueryable<T>
+
+`IQueryable<T>` is an interface that allows for querying data from a data source in a way that enables the execution of queries against a remote data source (like a database) while still providing the capabilities of LINQ. It provides a way to perform queries on data collections that may not be entirely loaded into memory, which makes it ideal for working with databases.
+
+#### Example Declaration
+
+You typically use `IQueryable<T>` when working with LINQ to SQL or Entity Framework. Here’s an example of declaring an `IQueryable<T>`:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+IQueryable<int> numbers = (new List<int> { 1, 2, 3, 4, 5 }).AsQueryable();
+```
+
+#### CRUD Operations on IQueryable<T>
+
+##### 1. Create
+
+Creating data usually involves adding new records to a data source. While `IQueryable<T>` itself doesn’t support adding items directly, you can perform the operation using the underlying data context or repository:
+
+```csharp
+using (var context = new YourDbContext()) {
+    var newNumber = new Number { Value = 6 };
+    context.Numbers.Add(newNumber); // Add the new record to the database
+    context.SaveChanges(); // Save changes to the database
+}
+```
+
+##### 2. Read
+
+To read data from an `IQueryable<T>`, you can use LINQ queries to filter, sort, or group the data. This is one of the primary uses of `IQueryable<T>`:
+
+```csharp
+using (var context = new YourDbContext()) {
+    IQueryable<Number> query = context.Numbers; // IQueryable from the database
+
+    // Read all numbers
+    var allNumbers = query.ToList(); // Executes the query
+
+    // Read even numbers
+    var evenNumbers = query.Where(n => n.Value % 2 == 0).ToList();
+    Console.WriteLine("Even numbers:");
+    foreach (var number in evenNumbers) {
+        Console.WriteLine(number.Value);
+    }
+}
+```
+
+##### 3. Update
+
+To update records, you must first retrieve them from the database, modify them, and then save the changes. Here's how to update an item:
+
+```csharp
+using (var context = new YourDbContext()) {
+    var numberToUpdate = context.Numbers.First(n => n.Value == 3); // Fetch the number
+    numberToUpdate.Value = 10; // Update the value
+    context.SaveChanges(); // Save changes to the database
+}
+```
+
+##### 4. Delete
+
+To delete records, you similarly fetch the record from the database and then remove it:
+
+```csharp
+using (var context = new YourDbContext()) {
+    var numberToDelete = context.Numbers.First(n => n.Value == 2); // Fetch the number
+    context.Numbers.Remove(numberToDelete); // Remove the number
+    context.SaveChanges(); // Save changes to the database
+}
+```
+
+#### Example of Full CRUD Operations
+
+Here is a complete example demonstrating CRUD operations using `IQueryable<T>` with an Entity Framework context:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore; // Make sure to add the required Entity Framework references
+
+// Entity Class
+public class Number {
+    public int Id { get; set; }
+    public int Value { get; set; }
+}
+
+// DbContext Class
+public class YourDbContext : DbContext {
+    public DbSet<Number> Numbers { get; set; }
+}
+
+class Program {
+    static void Main() {
+        // Ensure the database is created
+        using (var context = new YourDbContext()) {
+            context.Database.EnsureCreated();
+
+            // Create
+            context.Numbers.Add(new Number { Value = 1 });
+            context.Numbers.Add(new Number { Value = 2 });
+            context.Numbers.Add(new Number { Value = 3 });
+            context.SaveChanges();
+        }
+
+        // Read
+        using (var context = new YourDbContext()) {
+            IQueryable<Number> query = context.Numbers;
+
+            // Read all numbers
+            var allNumbers = query.ToList(); // Executes the query
+            Console.WriteLine("All Numbers:");
+            foreach (var number in allNumbers) {
+                Console.WriteLine(number.Value);
+            }
+
+            // Read even numbers
+            var evenNumbers = query.Where(n => n.Value % 2 == 0).ToList();
+            Console.WriteLine("\nEven Numbers:");
+            foreach (var number in evenNumbers) {
+                Console.WriteLine(number.Value);
+            }
+        }
+
+        // Update
+        using (var context = new YourDbContext()) {
+            var numberToUpdate = context.Numbers.First(n => n.Value == 3); // Fetch the number
+            numberToUpdate.Value = 10; // Update the value
+            context.SaveChanges(); // Save changes to the database
+        }
+
+        // Delete
+        using (var context = new YourDbContext()) {
+            var numberToDelete = context.Numbers.First(n => n.Value == 2); // Fetch the number
+            context.Numbers.Remove(numberToDelete); // Remove the number
+            context.SaveChanges(); // Save changes to the database
+        }
+    }
+}
+```
+
 ### Linked Lists
 
 A linked list is a linear data structure where each element is a separate object, and each element (node) contains a reference (link) to the next node in the sequence.
