@@ -301,17 +301,9 @@ public class Graph {
 
 ## Algorithms
 
-### Sorting Algorithms
-
-Here’s an overview of sorting algorithms, including **Bubble Sort**, **Selection Sort**, **Insertion Sort**, **Merge Sort**, **Quick Sort**, and **Heap Sort**, along with sample C# code snippets for each.
-
----
-
 ## Sorting Algorithms
 
 Sorting algorithms are methods for arranging the elements of a list or array in a specific order, typically in ascending or descending order. Different sorting algorithms have different characteristics in terms of complexity, efficiency, and stability.
-
----
 
 ### Bubble Sort
 
