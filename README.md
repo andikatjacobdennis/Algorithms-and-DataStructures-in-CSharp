@@ -708,6 +708,13 @@ class Program {
 
 `LinkedList<T>` is a generic collection that represents a doubly linked list, allowing for efficient insertion and removal of elements from any position in the list. Unlike arrays and `List<T>`, `LinkedList<T>` does not require contiguous memory allocation, making it more efficient for operations that involve frequent additions and deletions.
 
+**Use Cases:**
+- **Order Processing Queue**: Use linked lists to manage orders that require frequent insertions and deletions at both ends.
+- **Undo Functionality in Sales Applications**: Implement an undo feature in applications that allow users to revert changes easily.
+- **Dynamic Product Bundles Management**: Maintain product bundles where items can be added or removed dynamically.
+
+**Where Not to Use**: Avoid linked lists when random access is needed, as accessing elements requires traversing the list from the head.
+
 #### Example Declaration
 
 You can declare a `LinkedList<T>` as follows:
@@ -842,6 +849,13 @@ class Program {
 
 `Stack<T>` is a generic collection that allows you to store objects in a last-in, first-out order. This means that the last element added to the stack is the first one to be removed. It is ideal for scenarios where you need to keep track of a sequence of actions or states.
 
+**Use Cases:**
+- **Sales Order Processing Stack**: Manage pending sales orders using a stack structure for last-in-first-out processing.
+- **Function Call Management in Sales Systems**: Track function calls related to sales operations, such as discounts applied during checkout.
+- **Backtracking Sales Decisions**: Implement backtracking features in decision-making processes related to pricing or promotions.
+
+**Where Not to Use**: Avoid using stacks when you need random access or frequent modifications at arbitrary positions within the collection.
+
 #### Example Declaration
 
 You can declare a `Stack<T>` as follows:
@@ -951,6 +965,13 @@ class Program {
 ### ConcurrentStack<T>
 
 `ConcurrentStack<T>` is a thread-safe collection that allows multiple threads to add and remove items concurrently without needing additional synchronization. It is ideal for scenarios where multiple threads may be accessing and modifying the stack simultaneously.
+
+**Use Cases:**
+- **Thread-Safe Order Management System**: Manage orders concurrently in multi-threaded applications without locks.
+- **Task Scheduling in Sales Applications**: Handle tasks that can be processed in parallel while maintaining order of execution.
+- **Real-Time Inventory Updates**: Update inventory levels concurrently as sales occur across multiple threads.
+
+**Where Not to Use**: Avoid using ConcurrentStack when thread safety is not required, as it introduces unnecessary overhead compared to non-thread-safe stacks.
 
 #### Example Declaration
 
@@ -1067,6 +1088,13 @@ class Program {
 ### Queue<T>
 
 A `Queue<T>` represents a collection designed to hold a sequence of elements in the order they were added. Items are added to the end and removed from the front, following the FIFO (First-In, First-Out) principle.
+
+**Use Cases:**
+- **Customer Service Requests Handling**: Manage incoming customer service requests in a first-in-first-out manner.
+- **Sales Lead Management System**: Organize leads that need follow-up based on their arrival time.
+- **Event Scheduling for Promotions**: Schedule promotional events based on their order of creation.
+
+**Where Not to Use**: Avoid queues when you need random access or frequent modifications at arbitrary positions within the collection.
 
 #### Example Declaration
 
@@ -1187,6 +1215,13 @@ class Program {
 ### ConcurrentQueue<T>
 
 `ConcurrentQueue<T>` is a thread-safe collection that allows multiple threads to safely add and remove items without additional locking mechanisms. Like a standard queue, it follows the FIFO (First-In, First-Out) principle.
+
+**Use Cases:**
+- **Thread-Safe Lead Processing System**: Safely manage leads being processed by multiple agents concurrently.
+- **Real-Time Sales Notifications Handling**: Handle notifications about sales events across multiple threads without locking issues.
+- **Task Management in Multi-threaded Environments**: Efficiently manage tasks that require concurrent processing without losing order.
+
+**Where Not to Use**: Avoid using ConcurrentQueue if thread safety is unnecessary, as it may lead to performance overhead compared to standard queues.
 
 #### Example Declaration
 
@@ -1309,6 +1344,13 @@ class Program {
 
 A `Dictionary<TKey, TValue>` is a collection that stores key-value pairs, where each key must be unique. It provides efficient retrieval of values based on their associated keys.
 
+**Use Cases:** 
+- **Product Lookup by ID or Name:** Quickly retrieve product details based on unique identifiers like SKU or product name.
+- **Sales Data Aggregation:** Store aggregated sales data where keys represent products and values represent total sales figures.
+- **Configuration Settings Storage:** Maintain application settings where each setting can be accessed via a unique key.
+
+**Where Not to Use:** Avoid dictionaries when order matters since they do not maintain any specific order of elements.
+
 #### Example Declaration
 
 You can declare a `Dictionary<TKey, TValue>` as follows:
@@ -1423,6 +1465,13 @@ class Program {
 ### ConcurrentDictionary<TKey, TValue>
 
 `ConcurrentDictionary<TKey, TValue>` is a collection that stores key-value pairs, where each key must be unique. It is designed to handle multi-threaded scenarios, allowing safe access and modification of the dictionary from multiple threads without the need for external synchronization.
+
+**Use Cases:** 
+- **Thread-Safe Product Inventory Management:** Safely manage inventory levels across multiple threads without risking data corruption.
+- **User Session Management:** Store user sessions in a thread-safe manner for web applications handling concurrent requests.
+- **Real-Time Sales Tracking:** Efficiently update and retrieve real-time sales data from multiple threads.
+
+**Where Not to Use:** Avoid using ConcurrentDictionary if thread safety is not required, as it incurs additional overhead compared to regular dictionaries.
 
 #### Example Declaration
 
@@ -1544,11 +1593,11 @@ public class TreeNode {
 }
 ```
 
----
-
 #### Binary Trees
 
 A binary tree is a specific type of tree where each node has at most two children, referred to as the left child and the right child. Binary trees are used in various algorithms and data structures, such as binary search trees and heaps.
+
+**Use Cases:** Hierarchical representation of product categories; implementing expression trees for pricing calculations.
 
 ```csharp
 public class BinaryTreeNode {
@@ -1567,6 +1616,8 @@ public class BinaryTreeNode {
 #### Binary Search Trees (BST)
 
 A binary search tree is a binary tree with the additional property that for each node, all values in the left subtree are less than the node's value, and all values in the right subtree are greater. This property allows for efficient searching, insertion, and deletion operations.
+
+**Use Cases:** Fast searching and sorting of products; maintaining sorted lists of customer transactions based on timestamps.
 
 ```csharp
 public class BinarySearchTree {
@@ -1613,6 +1664,8 @@ public class BinarySearchTree {
 #### Heaps
 
 A heap is a special tree-based data structure that satisfies the heap property. In a max-heap, for any given node, the value of the node is greater than or equal to the values of its children, and in a min-heap, the value of the node is less than or equal to the values of its children. Heaps are commonly used in priority queues and sorting algorithms like heap sort.
+
+**Use Cases:** Priority queue implementations for managing high-priority sales tasks; optimizing inventory replenishment strategies based on demand forecasts.
 
 ```csharp
 public class MinHeap {
@@ -1677,6 +1730,8 @@ public class MinHeap {
 #### Trie
 
 A trie, or prefix tree, is a tree-like data structure used to store a dynamic set of strings, where the keys are usually strings. Tries are particularly useful for tasks involving retrieval of keys with a common prefix, such as autocomplete systems.
+
+- **Use Cases:** Efficiently storing and retrieving product names for autocomplete features in e-commerce platforms; managing keyword searches in product catalogs.
 
 ```csharp
 public class TrieNode {
