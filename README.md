@@ -4,7 +4,7 @@
 1.1 [**Overview of Algorithms and Data Structures**](./1.1_Overview_of_Algorithms_and_Data_Structures.md)  
 1.2 [**Importance in C# Programming**](./1.2_Importance_in_CSharp_Programming.md)  
 
-### 2. Getting Started
+### [2. Getting Started](2._Getting_Started.md)
 2.1 [**Prerequisites**](./2.1_Prerequisites.md)  
 2.2 [**Setting Up the Environment**](./2.2_Setting_Up_the_Environment.md)  
 
