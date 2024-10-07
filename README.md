@@ -138,8 +138,6 @@
 
 In this document, we will explore various data structures and algorithms that are essential for efficient programming in C#. Understanding these concepts will help you write better code, optimize performance, and solve complex problems effectively.
 
-Sure! Here's a consolidated view of both time and space complexity with examples and mathematical calculations for each category.
-
 ### Time and Space Complexity
 
 Time Complexity and Space Complexity are fundamental concepts in computer science and algorithm analysis, crucial for understanding the efficiency of algorithms. These concepts help developers evaluate how algorithms perform as the size of the input data increases, guiding them in choosing the right algorithms for their applications.
